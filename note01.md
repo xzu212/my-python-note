@@ -67,3 +67,18 @@ print(name.lower)
 ADA LOVELACE
 ada lovelace
 ```
+
+### 在字符串中使用变量
+
+```
+first_name = "ada" 
+last_name = "lovelace" 
+full_name = f"{first_name} {last_name}" 
+print(full_name)
+```
+得到输出：
+```
+ada lovelace
+```
+
+在字符串中插入变量的值，可在引号前加上字母`f`，再将要插入的变量放在花括号内，在Python显示字符串时，将把每个变量都替换成该值。
