@@ -54,4 +54,16 @@ Ada Lovelace
 
 在`name.title`中，`name`后面的句点让Python对变量`name`执行方法`title()`指定的操作。
 
-方法
+方法`title()`以首字母大写的方式显示每个单词。
+
+其他大小写处理方法：
+```
+name = "Ada Locelace"
+print(name.upper)
+print(name.lower)
+```
+输出：
+```
+ADA LOVELACE
+ada lovelace
+```
