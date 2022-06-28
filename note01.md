@@ -102,7 +102,8 @@ Python
     Python
 ```
 在字符串中添加换行符，可使用字符组合`\n`
-```>>>print("Languages:\nPython\nC\nJavaScript")
+```
+>>>print("Languages:\nPython\nC\nJavaScript")
 Languages: 
 Python 
 C 
