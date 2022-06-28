@@ -92,6 +92,19 @@ Hello,Ada Locelace!
 
 ### 使用制表符或换行符来添加空白
 
+在编程中，空白泛指任何非打印字符，如空格、制表符和换行符。
 
-
-
+在字符串中添加制表符，可使用字符组合`\t`
+```
+>>>print("Python")
+Python
+>>>print("\tPython")
+    Python
+```
+在字符串中添加换行符，可使用字符组合`\n`
+```>>>print("Languages:\nPython\nC\nJavaScript")
+Languages: 
+Python 
+C 
+JavaScript
+```
