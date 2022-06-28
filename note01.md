@@ -101,11 +101,59 @@ Python
 >>>print("\tPython")
     Python
 ```
-在字符串中添加换行符，可使用字符组合`\n`
+在字符串中添加换行符，可使用字符组合`\n`。
 ```
 >>>print("Languages:\nPython\nC\nJavaScript")
 Languages: 
 Python 
 C 
 JavaScript
+```
+
+### 删除空白
+
+Python能够找出字符串开头和末尾多余的空白。
+要确保字符串末尾没有空白，可使用方法`rstrip()` 。
+
+暂时删除：
+```
+>>> favorite_language = 'python ' 
+>>> favorite_language 
+'python ' 
+>>> favorite_language.rstrip() 
+'python'
+>>> favorite_language 
+'python '
+```
+
+永久删除字符串中的空白：
+```
+>>> favorite_language = 'python '
+>>> favorite_language = favorite_language.rstrip() 
+>>> favorite_language 
+'python'
+```
+
+为删除这个字符串中的空白，要将其末尾的空白剔除，再将结果关联到原来的变量。
+删除字符串开头的空白，或者同时删除字符串两边的空白。可分别使用方法lstrip() 和strip() ：
+```
+>>> favorite_language = ' python ' 
+>>> favorite_language.rstrip() 
+' python' 
+>>> favorite_language.lstrip() 
+'python ' 
+>>> favorite_language.strip() 
+'python'
+```
+
+### 使用字符串时避免语法错误 
+
+例如：在用单引号括起的字符串中，如果包含撇号，就将导致错误。这是因为这会导致Python将第一个单引号和撇号之间的内容视为一个字符串，进而将余下的文本视为Python代码，从而引发错误。
+```
+message = "One of Python's strengths is its diverse community." 
+print(message)
+```
+撇号位于两个双引号之间，因此Python解释器能够正确地理解这个字符串：
+```
+One of Python's strengths is its diverse community.
 ```
