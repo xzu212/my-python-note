@@ -157,3 +157,18 @@ print(message)
 ```
 One of Python's strengths is its diverse community.
 ```
+
+然而，如果使用单引号，Python将无法正确地确定字符串的结束位置：
+```
+message = 'One of Python's strengths is its diverse community.'
+print(message)
+```
+输出错误。
+
+## 数
+
+在Python中，可对整数执行加（+ ）减（- ）乘（* ）除（/ ）运算。
+
+在Python中，使用两个乘号`**`表示乘方运算。
+
+Python还支持运算次序，因此可在同一个表达式中使用多种运算。还可以使用圆括号来修改运算次序，让Python按你指定的次序执行运算。
