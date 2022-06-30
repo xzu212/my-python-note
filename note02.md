@@ -99,3 +99,33 @@ print(motorcycles)
 ```
 
 * 可以先创建一个空列表，再使用一系列函数调用`append()`来添加元素。
+```
+motorcycles = [] 
+motorcycles.append('honda') 
+motorcycles.append('yamaha') 
+motorcycles.append('suzuki') 
+print(motorcycles)
+
+---
+
+['honda', 'yamaha', 'suzuki']
+```
+
+2. 在列表中插入元素
+
+使用方法`insert()`可在列表的任何位置添加新元素。为此，需要指定新元素的索引和值。
+
+```
+motorcycles = ['honda', 'yamaha', 'suzuki']
+motorcycles.insert(0, 'ducati') 
+print(motorcycles)
+
+---
+
+['ducati', 'honda', 'yamaha', 'suzuki']
+```
+示例中，`'ducati'`被插入到列表开头。方法`insert()`在索引0处添加空间，并将值`'ducati'`存储到这里。  
+这种操作将列表中已有的每个元素都右移一个位置。
+
+### 从列表中删除元素
+
