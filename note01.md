@@ -1,15 +1,12 @@
 # 变量和简单数据类型
 
 ## 变量
-输入：
 ```
 message = "Hello Python world!" 
 print(message)
 message = "Hello Python Crash Course world!" 
 print(message)
-```
-输出：
-```
+---
 Hello Python world! 
 Hello Python Crash Course world!
 ```
@@ -43,9 +40,7 @@ Hello Python Crash Course world!
 ```
 name = "ada lovelace"
 print(name.title())
-```
-得到输出：
-```
+---
 Ada Lovelace
 ```
 示例中，变量`name`指向小写字符串`"ada lovelace"`，在函数调用print()中，方法title()出现在变量后面。
@@ -61,9 +56,7 @@ Ada Lovelace
 name = "Ada Locelace"
 print(name.upper)
 print(name.lower)
-```
-输出：
-```
+---
 ADA LOVELACE
 ada lovelace
 ```
@@ -78,9 +71,7 @@ print(full_name)
 print(f"Hello,{full_name.title()}!")
 message = f"Hello,{fullname.title()}!"
 print(message)
-```
-得到输出：
-```
+---
 ada lovelace
 Hello,Ada Lovelace!
 Hello,Ada Locelace!
