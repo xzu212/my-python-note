@@ -129,3 +129,55 @@ print(motorcycles)
 
 ### 从列表中删除元素
 
+1. 使用`del`语句删除元素
+
+- 如果知道要删除的元素在列表中的位置，可使用`del`语句。
+
+```
+motorcycles = ['honda', 'yamaha', 'suzuki'] 
+print(motorcycles) 
+del motorcycles[0] 
+print(motorcycles)
+
+---
+
+['honda', 'yamaha', 'suzuki'] 
+['yamaha', 'suzuki']
+```
+
+使用`del`可删除任意位置处的列表元素，条件是知道其索引。
+
+```
+motorcycles = ['honda', 'yamaha', 'suzuki'] 
+print(motorcycles) 
+del motorcycles[1] 
+print(motorcycles)
+
+---
+
+['honda', 'yamaha', 'suzuki'] 
+['honda', 'suzuki']
+```
+
+在这两个示例中，使用`del`语句将值从列表中删除后，就无法访问了。
+
+2. 使用方法`pop()`删除元素
+
+方法`pop() `删除列表末尾的元素，并让你能够接着使用它。
+
+```
+motorcycles = ['honda','yamaha','suzuki'] 
+print(motorcycles)
+popped_motorcycles = motorcycles.pop()
+print(motorcycles)
+print(popped_motorcycles)
+
+---
+['honda','yamaha','suzuki']
+['honda','yamaha']
+suzuki
+```
+
+3. 弹出列表中任何位置处的元素
+
+可以使用`pop()`来删除列表中任意位置的元素，只需在圆括号中指定要删除元素的索引即可。
