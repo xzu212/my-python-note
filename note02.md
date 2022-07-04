@@ -163,7 +163,7 @@ print(motorcycles)
 
 2. 使用方法`pop()`删除元素
 
-方法`pop() `删除列表末尾的元素，并让你能够接着使用它。
+方法`pop() `删除列表**末尾**的元素，并让你能够接着使用它。
 
 ```
 motorcycles = ['honda','yamaha','suzuki'] 
@@ -173,6 +173,7 @@ print(motorcycles)
 print(popped_motorcycles)
 
 ---
+
 ['honda','yamaha','suzuki']
 ['honda','yamaha']
 suzuki
@@ -181,3 +182,23 @@ suzuki
 3. 弹出列表中任何位置处的元素
 
 可以使用`pop()`来删除列表中任意位置的元素，只需在圆括号中指定要删除元素的索引即可。
+
+```
+motorcycles = ['honda', 'yamaha', 'suzuki']
+first = motorcycles.pop(0)
+print(f"My first motorcycle was {first.title()}.")
+
+---
+
+My first motorcycle was Honda.
+```
+每当使用`pop()`时，被弹出的元素就不再在列表中。
+
+如果不确定该使用`del`语句还是`pop()`方法，下面是一个简单的判断标准：  
+
+如果要从列表中删除一个元素，且不再以任何方式用它，就使用`del`语句；  
+如果要在删除元素后还能继续使用它，就使用方法`pop()`。
+
+4. 根据数值删除元素
+
+有时候，不知道要从列表中删除的值所处的位置。如果只知道要删除的元素的值，可使用方法`remove()`。
