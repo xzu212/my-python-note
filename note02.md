@@ -202,3 +202,110 @@ My first motorcycle was Honda.
 4. 根据数值删除元素
 
 有时候，不知道要从列表中删除的值所处的位置。如果只知道要删除的元素的值，可使用方法`remove()`。
+```
+motorcycles = ['honda','yamaha','suzuki','ducati']
+print(motorcycles)
+motorcycles.remove('ducati')
+print(motorcycles))
+
+---
+
+['honda', 'yamaha', 'suzuki', 'ducati']
+['honda', 'yamaha', 'suzuki']
+```
+使用`remove()`从列表中删除元素时，也可接着使用它的值。
+```
+motorcycles = ['honda','yamaha','suzuki','ducati']
+print(motorcycles)
+
+too_expensive = 'ducati'
+motorcycles.remove(too_expensive)
+print(motorcycles)
+print(f"A {too_expensive.title()} is too expensive for me.")
+
+---
+
+['honda', 'yamaha', 'suzuki', 'ducati']
+['honda', 'yamaha', 'suzuki']
+A Ducati is too expensive for me.
+```
+
+##  组织列表
+
+在列表中，元素的排列顺序常常无法预测，因为你并非总能控制数据的顺序。有时候，希望保留列表元素最初的排列顺序，而有时候又需要调整排列顺序。
+
+### 使用方法`sort()`对列表永久排序
+
+```
+cars = ['bmw','audi','toyota','subaru']
+cars.sort()
+print(cars)
+
+---
+
+['audi', 'bmw', 'subaru', 'toyota']
+```
+
+方法`sort()`**永久性**地修改列表元素的排列顺序。
+
+还可以按与字母顺序相反的顺序排列列表元素，只需向`sort()`方法传递参数`reverse=True`即可。
+
+```
+cars = ['bmw','audi','toyota','subaru']
+cars.sort(reverse=True)
+print(cars)
+
+---
+
+['toyota', 'subaru', 'bmw', 'audi']
+```
+
+### 使用函数`sorted()`对列表临时排序
+
+要保留列表元素原来的排列顺序，同时以特定的顺序呈现它们，可使用函数`sorted()`。函数`sorted()`能够按特定顺序显示列表元素，同时不影响它们在列表中的原始排列顺序。
+
+```
+cars = ['bmw','audi','toyota','subaru']
+print("Here is the original list:")
+print(cars)
+print("\nHere is the sorted list:")
+print(sorted(cars))
+
+---
+
+Here is the original list:
+['bmw', 'audi', 'toyota', 'subaru']
+
+Here is the sorted list:
+['audi', 'bmw', 'subaru', 'toyota']
+```
+
+如果要按与字母顺序相反的顺序显示列表，也可向函数`sorted()`传递参数`reverse=True`。
+
+### 倒着打印列表
+
+要反转列表元素的排列顺序，可使用方法`reverse()`。
+
+```
+cars = ['bmw','audi','toyota','subaru']
+print(cars)
+cars.reverse()
+print(cars)
+
+---
+
+['bmw', 'audi', 'toyota', 'subaru']
+['subaru', 'toyota', 'audi', 'bmw']
+```
+`reverse()`不是按与字母顺序相反的顺序排列列表元素，而只是反转列表元素的排列顺序。
+
+方法`reverse()`永久性地修改列表元素的排列顺序，但可随时恢复到原来的排列顺序，只需对列表再次调用`reverse()`即可。
+
+### 确定列表的长度
+
+使用函数`len()`可快速获悉列表的长度。
+```
+>>> cars = ['bmw', 'audi', 'toyota', 'subaru']
+>>> len(cars) 
+4
+```
