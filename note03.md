@@ -39,3 +39,53 @@ for dog in dogs:
 for item in list_of_items:
 ```
 
+使用单数和复数式名称，可帮助判断代码段处理的是单个列表元素还是整个列表。
+
+### 在`for`循环中执行更多操作
+
+>在`for`循环中，可对每个元素执行任何操作。
+
+```
+magicians = ['alice','david','carolina']
+for magician in magicians:
+    print(f"{magician.title()},that was a great trick!")
+    print(f"I can`t wait to see your next trick,{magician.title()}.")
+
+---
+
+Alice,that was a great treak!
+I can`t wait to see your next trick,Alice.
+David,that was a great treak!
+I can`t wait to see your next trick,David.
+Carolina,that was a great treak!
+I can`t wait to see your next trick,Carolina.
+```
+
+### 在`for`循环结束后执行一些操作
+
+>`for`循环结束后，通常需要提供总结性输出或接着执行其他任务。
+>
+>在`for`循环后面，没有缩进的代码都只执行一次，不会重复执行。
+
+```
+magicians = ['alice','david','carolina']
+for magician in magicians:
+    print(f"{magician.title()},that was a great trick!")
+    print(f"I can`t wait to see your next trick,{magician.title()}.")
+print("\nThank you ,everyone.That was a great magic show!")
+
+---
+
+Alice,that was a great trick!
+I can`t wait to see your next trick,Alice.
+David,that was a great trick!
+I can`t wait to see your next trick,David.
+Carolina,that was a great trick!
+I can`t wait to see your next trick,Carolina.
+
+Thank you,everyone.That was a great magic show!
+```
+
+## 避免缩进错误
+
+Python根据缩进来判断代码行与前一个代码行的关系。
