@@ -14,7 +14,6 @@ for magician in magicians:
     print(magician)
     
 ---
-
 alice
 david
 carolina
@@ -52,7 +51,6 @@ for magician in magicians:
     print(f"I can`t wait to see your next trick,{magician.title()}.")
 
 ---
-
 Alice,that was a great treak!
 I can`t wait to see your next trick,Alice.
 David,that was a great treak!
@@ -75,7 +73,6 @@ for magician in magicians:
 print("\nThank you ,everyone.That was a great magic show!")
 
 ---
-
 Alice,that was a great trick!
 I can`t wait to see your next trick,Alice.
 David,that was a great trick!
@@ -88,4 +85,42 @@ Thank you,everyone.That was a great magic show!
 
 ## 避免缩进错误
 
-Python根据缩进来判断代码行与前一个代码行的关系。
+Python根据缩进来判断代码行与前一个代码行的关系。  
+一些常见的缩进错误：
+
+* **忘记缩进**
+* **忘记缩进额外的代码**
+* **不必要的缩进**
+* **循环后不必要的缩进**
+* **遗漏了冒号**
+
+## 创建数值列表
+
+### 使用函数`range()`
+
+>Python函数`range()`能够生成一系列数。
+
+```
+for value in range(1,5):
+    print(value)
+    
+---
+1
+2
+3
+4
+```
+`range()`只打印1\~4，要打印1\~5，需要使用`range(1,6)`
+
+调用函数`range()`时，也可只指定一个参数，这样它将从0开始。例如，range(6)返回数0\~5。
+
+### 使用`range()`创建数字列表
+
+要创建数字列表，可使用函数`list()`将`range()`的结果直接转换为**列表**。如果将`range()`作为`list()`的参数，输出将是一个数字列表。
+```
+numbers = list(range(1,6))
+print(numbers)
+
+---
+[1, 2, 3, 4, 5]
+```
