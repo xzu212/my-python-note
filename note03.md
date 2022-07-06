@@ -117,6 +117,7 @@ for value in range(1,5):
 ### 使用`range()`创建数字列表
 
 要创建数字列表，可使用函数`list()`将`range()`的结果直接转换为**列表**。如果将`range()`作为`list()`的参数，输出将是一个数字列表。
+
 ```
 numbers = list(range(1,6))
 print(numbers)
@@ -124,3 +125,75 @@ print(numbers)
 ---
 [1, 2, 3, 4, 5]
 ```
+
+使用函数`range()`时，还可**指定步长**。为此，可给这个函数指定第三个参数，Python将根据这个步长来生成数。
+
+```
+even_numbers = list(range(2,11,2))
+print(even_numbers)
+
+---
+[2, 4, 6, 8, 10]
+```
+
+创建一个列表，将前十个整数的平方加入：
+```
+squares = []
+for value in range(1,11):
+    square = value ** 2
+    squares.append(square)
+print(squares)
+
+---
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+>1. 创建一个空列表`squares`；
+>2. 使用函数`range()`让Python遍历1\~10的值；
+>3. 计算当前数值的平方，并将结果赋给变量`square`；
+>4. 将新计算得到的平方值附加到列表`squares`末尾；
+>5. 最后，循环结束后打印列表`squares`。
+
+为了让代码更简洁，可不使用临时变量`square`，而直接将每个计算得到的值附加到列表末尾：
+```
+squares=[]
+for value in range(1,11):
+    squares.append(value**2)
+print(squares)
+
+---
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+
+### 对数字列表执行简单的统计计算
+
+```
+>>>digits = [1,2,3,4,5,6,7,8,9,0]
+>>>min(digits)
+0
+>>>max(digits)
+9
+>>>sum(digits)
+45
+```
+
+### 列表解析
+
+前面的生成列表`squares`的方式包含三四行代码，而列表解析只需编写一行代码就能生成这样的列表。
+
+列表解析将`for`循环和创建新元素的代码合并成一行，并自动附加新元素。
+
+```
+squares = [value**2 for value in range(1,11)]
+print(squares)
+
+---
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+
+>首先，指定一个描述性的列表名，如`squares`。
+>
+>然后，定义一个表达式，用于生成要存储到列表中的值。在这个示例中，表达式为`value**2`，它计算平方值。
+> 
+>接下来，编写一个`for`循环，用于给表达式提供值。
+>
+>在这个示例中，`for`循环为`for value in range(1,11)`，它将值`1~10`提供给表达式`value**2`。请注意，这里的for语句末尾没有冒号。
