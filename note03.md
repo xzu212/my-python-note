@@ -201,3 +201,33 @@ print(squares)
 ## 使用列表的一部分
 
 >处理列表的部分元素，Python称之为切片。
+
+### 切片
+
+* 要创建切片，可指定要使用的第一个元素和最后一个元素的索引。
+
+* 与函数range()一样，Python在到达第二个索引之前的元素后停止。
+
+* 要输出列表中的前三个元素，需要指定索引0和3，这将返回索引为0、1和2的元素。
+
+```
+players = ['charles','martina','michael','florence','eli']
+
+print(players[0:3])  
+['charles', 'martina', 'michael']    #只包含前三个元素
+
+print(players[1:4])
+['martina', 'michael', 'florence']    #提取第二、三、四个元素
+
+print(players[:4])
+['charles', 'martina', 'michael', 'florence']    #不指定第一个索引，自动从列表头开始
+
+print(players[2:])
+['michael', 'florence', 'eli']   #提取从第三个元素到列表末尾的所有元素
+
+print(players[-3:])
+['michael', 'florence', 'eli']    #提取最后三个元素
+
+print(players[0:5:2])
+['charles', 'michael', 'eli']    #每隔两个元素提取一个元素
+```
