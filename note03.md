@@ -231,3 +231,51 @@ print(players[-3:])
 print(players[0:5:2])
 ['charles', 'michael', 'eli']    #每隔两个元素提取一个元素
 ```
+
+### 遍历切片 
+
+>要遍历列表的部分元素，可在`for`循环中使用切片。
+```
+players = ['charles','martina','michael','florence','eli']
+print("Here are the first three players on my team:")
+for player in players[:3]:
+    print(player.title())
+    
+---
+Here are the first three players on my team:
+Charles
+Martina
+Michael
+```
+
+### 复制列表
+
+>要复制列表，可创建一个包含整个列表的切片，方法是同时省略起始索引和终止索引`([:])`。
+>
+>这让Python创建一个始于第一个元素、终止于最后一个元素的切片，即整个列表的副本。
+
+```
+my_foods = ['pizza','falafel','carrot cake']
+friend_foods = my_foods[:]
+print("My favorite foods are:")
+print(my_foods)
+print("My friend's favorite foods are:")
+print(friend_foods)
+my_foods.append('cannoli')
+friend_foods.append('ice cream')
+print("\nMy favorite foods are:")
+print(my_foods)
+print("My friend's favorite foods are:")
+print(friend_foods)
+
+---
+My favorite foods are:
+['pizza', 'falafel', 'carrot cake']
+My friend's favorite foods are:
+['pizza', 'falafel', 'carrot cake']
+
+My favorite foods are:
+['pizza', 'falafel', 'carrot cake', 'cannoli']
+My friend's favorite foods are:
+['pizza', 'falafel', 'carrot cake', 'ice cream']
+```
