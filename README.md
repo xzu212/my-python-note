@@ -5,3 +5,5 @@
 [列表简介](https://github.com/xzu212/my-python-note/blob/main/note02.md)
 
 [操作列表](https://github.com/xzu212/my-python-note/blob/main/note03.md)
+
+[if语句](https://github.com/xzu212/my-python-note/blob/main/note04.md)
