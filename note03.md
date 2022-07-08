@@ -279,3 +279,67 @@ My favorite foods are:
 My friend's favorite foods are:
 ['pizza', 'falafel', 'carrot cake', 'ice cream']
 ```
+
+## 元组
+
+>Python将不能修改的值称为不可变的 ，而不可变的列表被称为**元组**。
+
+### 定义元组
+
+>元组看起来很像列表，但使用圆括号而非中括号来标识。定义元组后，就可使用索引来访问其元素，就像访问列表元素一样。
+
+```
+dimensions = (200,50)
+print(dimensions[0])
+print(dimensions[1])
+
+---
+200
+50
+```
+试图修改元组的操作是被禁止的，Python不能给元组的元素赋值。
+
+严格地说，元组是由逗号标识的，圆括号只是让元组看起来更整洁、更清晰。如果你要定义只包含一个元素的元组，必须在这个元素后面加上逗号：
+```
+my_t = (3,)
+```
+创建只包含一个元素的元组通常没有意义，但自动生成的元组有可能只有一个元素。
+
+### 遍历元组中的所有值
+
+>像列表一样，也可以使用`for`循环来遍历元组中的所有值,就像遍历列表时一样，Python返回元组中所有的元素：
+
+```
+dimensions =(200,50)
+for dimension in dimensions:
+    print(dimension)
+    
+---
+200
+50
+```
+
+### 修改元组变量
+
+>不能修改元组的元素，但可以给存储元组的变量赋值。
+
+```
+dimensions = (200,50)
+print("original dimensions:")
+for dimension in dimensions:
+    print(dimension)
+    
+dimensions = (400,80)
+print("\nModified dimensions:")
+for dimension in dimensions:
+    print(dimension)
+    
+---
+original dimensions:
+200
+50
+
+Modified dimensions:
+400
+80
+``` 
