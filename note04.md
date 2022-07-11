@@ -312,3 +312,28 @@ print(f"Your admission cost is ${price}.")
 >**然而，有时候必须检查你关心的所有条件。在这种情况下，应使用一系列不包含`elif`和`else`代码块的简单`if`语句。**
 >
 >在可能有多个条件为`True`且需要在每个条件为`True`时都采取相应措施时，适合使用这种方法。
+
+```
+requested_toppings = ['mushrooms','extra cheese']
+
+if 'mushrooms' in requested_toppings:
+    print("Adding mushrooms.")
+if 'pepperoni' in requested_toppings:
+    print("Adding pepperoni.")
+if 'extra cheese' in requested_toppings:
+    print("Adding extra cheese.")
+
+print("\nFinished making your pizza.")
+
+---
+Adding mushrooms.
+Adding extra cheese.
+
+Finished making your pizza.
+```
+
+**如果只想执行一个代码块，就使用`if-elif-else`结构；如果要执行多个代码块，就使用一系列独立的`if`语句。**
+
+## 使用if语句处理列表
+
+### 检查特殊元素
