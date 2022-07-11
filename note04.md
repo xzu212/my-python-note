@@ -187,3 +187,128 @@ False
 ### 检查特定值是否不包含在列表中
 
 >还有些时候，确定特定的值未包含在列表中很重要。在这种情况下，可使用关键字`not in`。
+
+```
+banned_users = ['andrew','carolina','david']
+user = 'marie'
+
+if user not in banned_users:
+    print(f"{user.title()},you can post a response if you wish.")
+    
+---
+Marie,you can post a response if you wish.
+```
+
+### 布尔表达式
+
+>**布尔表达式**，它不过是条件测试的别名。与条件表达式一样，布尔表达式的结果要么为`True`，要么为`False`。
+
+## if语句
+
+### 简单的if语句
+
+```
+age = 19
+if age > 18:
+    print("You are old enough to vote !")
+    
+---
+You are old enough to vote !
+```
+
+在`if`语句中，缩进的作用与在`for`循环中相同。如果测试通过了，将执行`if`语句后面所有缩进的代码行，否则将忽略它们。 
+
+在紧跟`if`语句后面的代码块中，可根据需要包含**任意数量**的代码行。
+
+### if-else语句
+
+>在条件测试通过时执行一个操作，在没有通过时执行另一个操作，可使用Python提供的if-else语句。
+
+```
+age = 17
+if age >= 18:
+    print("You are old enough to vote !")
+    print("Have you register to vote as soon as you turn 18 !")
+else:
+    print("Sorry , you are too young to vote .")
+    print("Please register to vote as soon as you turn 18 !")
+    
+---
+Sorry , you are too young to vote .
+Please register to vote as soon as you turn 18 !
+```
+
+### if-elif-else 结构
+
+>检查超过两个的情形，可使用Python提供的`if-elif-else`结构。
+>
+>Python只执行`if-elif-else`结构中的一个代码块。它依次检查每个条件测试，直到遇到通过了的条件测试。
+>
+>测试通过后，Python将执行紧跟在它后面的代码，并跳过余下的测试。
+
+```
+age = 12
+if age < 4:
+    print("Your admission cost is $0.")
+elif age < 18:
+    print("Your admission cost is $25.")
+else:
+    print("Your admission cost is $40.")
+    
+---
+Your admission cost is $25.
+```
+简化代码：
+```
+age = 12
+if age < 4:
+    price = 0
+elif age <18:
+    price = 25
+else:
+    price = 40
+print(f"Your admission cost is ${price}.")
+
+```
+
+### 使用多个elif代码块
+
+```
+age = 12
+if age < 4:
+    price = 0
+elif age <18:
+    price = 25
+elif age < 65:
+    price = 40
+else:
+    price = 20
+print(f"Your admission cost is ${price}.")
+```
+
+### 省略else代码块
+
+```
+age = 12
+
+if age < 4:
+    price = 0
+elif age < 18:
+    price = 25
+elif age < 65:
+    price = 40
+elif age > 65:
+    price = 20
+
+print(f"Your admission cost is ${price}.")
+```
+
+### 测试多个条件
+
+>`if-elif-else`结构功能强大，但仅适用于只有一个条件满足的情况：遇到通过了的测试后，Python就跳过余下的测试。
+>
+>这种行为很好，效率很高，让你能够测试一个特定的条件。 
+>
+>**然而，有时候必须检查你关心的所有条件。在这种情况下，应使用一系列不包含`elif`和`else`代码块的简单`if`语句。**
+>
+>在可能有多个条件为`True`且需要在每个条件为`True`时都采取相应措施时，适合使用这种方法。
