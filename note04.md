@@ -371,3 +371,38 @@ else:
 ---
 Are you sure you want a plain pizza?
 ```
+
+### 使用多个列表
+
+```
+available_toppings = ['mushrooms','olives','green peppers','pepperoni','pineapple','extra cheese']
+requested_toppings = ['mushrooms','french fries','extra cheese']
+
+for requested_topping in requested_toppings:
+    if requested_topping in available_toppings:
+        print(f"Adding {requested_topping}.")
+    else:
+        print(f"Sorry, we don't have {requested_topping}.")
+
+print("\nFinished making your pizza!")
+
+---
+Adding mushrooms.
+Sorry, we don't have french fries.
+Adding extra cheese.
+
+Finished making your pizza!
+```
+
+## 设置if语句的格式
+
+>建议在诸如`==`、`>=`和`<=`等比较运算符两边各添加一个空格。
+
+```
+if age < 4:
+```
+要比
+```
+if age<4:
+```
+美观
