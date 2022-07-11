@@ -141,3 +141,49 @@ False
 >
 >如果每个测试都通过了，整个表达式就为`True`；如果至少一个测试没有通过，整个表达式就为`False`。
 
+```
+>>> age_0 = 22 
+>>> age_1 = 18 
+>>> age_0 >= 21 and age_1 >= 21 
+False
+>>> age_1 = 22 
+>>> age_0 >= 21 and age_1 >= 21 
+True
+```
+
+为改善可读性，可将每个测试分别放在一对圆括号内，但并非必须这样做：
+```
+(age_0 >= 21) and (age_1 >= 21)
+```
+
+2. 使用`or`检查多个条件
+
+>关键字`or`也能够让你检查多个条件，但只要至少一个条件满足，就能通过整个测试。
+>
+>仅当两个测试都没有通过时，使用`or`的表达式才为`False`。
+
+```
+>>> age_0 = 22 
+>>> age_1 = 18
+>>> age_0 >= 21 or age_1 >= 21 
+True
+>>> age_0 = 18 
+>>> age_0 >= 21 or age_1 >= 21 
+False
+```
+
+### 检查特定值是否包含在列表中
+
+>要判断特定的值是否已包含在列表中，可使用关键字`in`。
+
+```
+>>>requested_toppings = ['mushrooms','onions','pineapple']
+>>>'mushrooms' in requested_toppings
+True
+>>>'pepperoni' in requested_toppings
+False
+```
+
+### 检查特定值是否不包含在列表中
+
+>还有些时候，确定特定的值未包含在列表中很重要。在这种情况下，可使用关键字`not in`。
