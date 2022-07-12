@@ -182,3 +182,38 @@ No point value assigned.
 >如果指定的键有可能不存在，应考虑使用方法`get()`，而不要使用方括号表示法。
 
 >调用`get()`时，如果没有指定第二个参数且指定的键不存在，Python将返回值`None`。这个特殊值表示没有相应的 值。`None`并非错误，而是一个表示所需值不存在的特殊值。
+
+## 遍历字典
+
+字典可用于以各种方式存储信息，因此有多种遍历方式：可遍历字典的所有键值对，也可仅遍历键或值。
+
+### 遍历所有键值对
+
+>下面的字典存储一名用户的用户名、名和姓：
+
+```
+user_0 = {
+    'username':'efermi',
+    'first':'enrico',
+    'last':'fermi',
+}
+
+for key,value in user_0.items():
+    print(f"\nKey:{key}")
+    print(f"Value:{value}")
+    
+---
+Key:username
+Value:efermi
+
+Key:first
+Value:enrico
+
+Key:last
+Value:fermi
+```
+>编写遍历字典的`for`循环，可声明两个变量，用于存储键值对中的键和值。这两个变量可以使用任意名称。
+>
+>`for`语句的第二部分包含字典名和方法`items()`，它返回一个键值对列表。
+>
+>接下来，`for`循环依次将每个键值对赋给指定的两个变量，使用这两个变量来打印每个键及其相关联的值。
