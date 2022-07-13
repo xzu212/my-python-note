@@ -217,3 +217,47 @@ Value:fermi
 >`for`语句的第二部分包含字典名和方法`items()`，它返回一个键值对列表。
 >
 >接下来，`for`循环依次将每个键值对赋给指定的两个变量，使用这两个变量来打印每个键及其相关联的值。
+
+```
+favorite_languages = {
+    'jen':'python',
+    'sarah':'c',
+    'edward':'ruby',
+    'phil':'python',
+}
+for name,language in favorite_languages.items():
+    print(f"{name.title()}'s favorite language is {language.title()}")
+
+---
+Jen's favorite language is Python.
+Sarah's favorite language is C.
+Edward's favorite language is Ruby.
+Phil's favorite language is Python.
+```
+>Python遍历字典中的每个键值对，并将键赋给变量`name`，将值赋给变量`language`。
+
+### 遍历字典中的所有键
+
+在不需要使用字典中的值时，方法`keys()`很有用。
+
+******
+
+>遍历字典`favorite_languages`，并将每个被调查者的名字都打印出来：
+
+```
+favorite_languages = {
+    'jen':'python',
+    'sarah':'c',
+    'edward':'ruby',
+    'phil':'python',
+    }
+for name in favorite_languages.keys():
+    print(name.title())
+
+---
+Jen
+Sarah
+Edward
+Phil
+```
+>Python提取字典`favorite_languages`中的所有**键**，并依次将它们赋给变量`name`。输出列出每个被调查者的名字。
