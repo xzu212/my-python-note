@@ -261,3 +261,89 @@ Edward
 Phil
 ```
 >Python提取字典`favorite_languages`中的所有**键**，并依次将它们赋给变量`name`。输出列出每个被调查者的名字。
+
+遍历字典时，会默认遍历所有的键。因此，把
+```
+for name in favorite_languages.keys():
+```
+替换为
+```
+for name in favorite_languages:
+```
+输出将不变。显式地使用`keys()`可以让代码更容易理解。
+
+>在循环中，可使用键来访问与之相关联的值。
+```
+favorite_languages = {
+    'jen':'python',
+    'sarah':'c',
+    'edward':'ruby',
+    'phil':'python',
+    }
+
+friends = ['phil','sarah']
+for name in favorite_languages.keys():
+    print(f"Hi {name.title()}.")
+    if name in friends:
+        language = favorite_languages[name].title()
+        print(f"\t{name.title()},I see you love {language}!")
+
+---
+Hi Jen.
+Hi Sarah.
+	Sarah,I see you love C!
+Hi Edward.
+Hi Phil.
+	Phil,I see you love Python!
+```
+>创建一个列表，其中包含要收到打印消息的朋友。
+>
+>在循环中，打印每个人的名字，并检查当前的名字是否在列表`friends`中。
+>
+>如果在，就打印一句特殊的问候语，其中包含这位朋友喜欢的语言。
+>
+>为获悉朋友喜欢的语言，我们使用了字典名，并将变量`name`的当前值作为键。
+
+还可使用方法`keys()`确定某个人是否接受了调查:
+```
+favorite_languages = {
+    'jen':'python',
+    'sarah':'c',
+    'edward':'ruby',
+    'phil':'python',
+    }
+if 'erin' not in favorite_languages.keys():
+    print("Erin, please take our poll!")
+    
+---
+Erin, please take our poll!
+```
+>方法`keys()`并非只能用于遍历：
+>
+>实际上，它返回一个列表，其中包含字典中的所有键。
+>
+>因此代码核实`'erin'`是否包含在这个列表中。因为她并不包含在这个列表中，所以打印一条消息，邀请她参加调查。
+
+### 按特定顺序遍历字典中的所有键
+
+要以特定顺序返回元素，一种办法是在`for`循环中对返回的键进行排序。
+
+为此，可使用函数`sorted()`来获得按特定顺序排列的键列表的副本：
+```
+favorite_languages = {
+    'jen':'python',
+    'sarah':'c',
+    'edward':'ruby',
+    'phil':'python',
+    }
+
+for name in sorted(favorite_languages.keys()): 
+    print(f"{name.title()}, thank you for taking the poll.")
+    
+---
+Edward, thank you for taking the poll.
+Jen, thank you for taking the poll.
+Phil, thank you for taking the poll.
+Sarah, thank you for taking the poll.
+```
+
