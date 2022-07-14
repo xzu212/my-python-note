@@ -402,3 +402,107 @@ C
 
 ## 嵌套
 
+将字典存储在列表中，或将列表作为值存储在字典中，称为**嵌套**。
+
+可以在列表中嵌套字典、在字典中嵌套列表甚至在字典中嵌套字典。
+
+### 字典列表
+
+>创建一个包含三个外星人的列表：
+
+```
+alien_0 = {'color': 'green', 'points': 5} 
+alien_1 = {'color': 'yellow', 'points': 10} 
+alien_2 = {'color': 'red', 'points': 15}  
+aliens = [alien_0, alien_1, alien_2] 
+for alien in aliens:
+    print(alien)
+    
+---
+{'color': 'green', 'points': 5}
+{'color': 'yellow', 'points': 10}
+{'color': 'red', 'points': 15}
+```
+>首先创建三个字典，其中每个字典都表示一个外星人。然后将这些字典都存储到一个名为`aliens`的列表中。最后，遍历这个列表，并将每个外星人都打印出来。
+
+>示例，使用`range()`生成30个外星人：
+```
+# 创建一个用于存储外星人的空列表
+aliens = []
+# 创建30个绿色的外星人
+for alien_number in range(30):
+    new_alien = {'color':'green','points':'5','speed':'slow'}
+    aliens.append(new_alien)
+    
+# 显示前5个外星人
+for alien in aliens[:5]:
+    print(alien)
+print("...")
+# 显示创建了多少个外星人
+print(f"Total number of aliens:{len(aliens)}")
+
+---
+{'color': 'green', 'points': '5', 'speed': 'slow'}
+{'color': 'green', 'points': '5', 'speed': 'slow'}
+{'color': 'green', 'points': '5', 'speed': 'slow'}
+{'color': 'green', 'points': '5', 'speed': 'slow'}
+{'color': 'green', 'points': '5', 'speed': 'slow'}
+...
+Total number of aliens:30
+```
+>首先创建一个空列表，用于存储接下来将创建的所有外星人。
+>
+>`range()`返回一系列数，告诉Python要重复这个循环多少次。每次执行这个循环时，都创建一个外星人，并将其附加到列表`aliens`末尾。
+>
+>使用一个切片来打印前5个外星人。
+>
+>打印列表的长度，以证明确实创建了30个外星人。
+
+******
+
+>使用`for`循环和`if`语句来修改某些外星人的颜色。例如，要将前三个外星人修改为黄色、速度为中等且值10分：
+```
+# 创建一个用于存储外星人的空列表
+aliens = []
+# 创建30个绿色的外星人
+for alien_number in range(30):
+    new_alien = {'color':'green','points':'5','speed':'slow'}
+    aliens.append(new_alien)
+    
+
+for alien in aliens[:3]:
+    if alien['color'] == 'green':
+        alien['color'] = 'yellow',
+        alien['speed'] = 'medium',
+        alien['points'] = 10
+
+# 显示前5个外星人
+for alien in aliens[:5]:
+    print(alien)
+print("...")
+
+---
+{'color': ('yellow',), 'points': 10, 'speed': ('medium',)}
+{'color': ('yellow',), 'points': 10, 'speed': ('medium',)}
+{'color': ('yellow',), 'points': 10, 'speed': ('medium',)}
+{'color': 'green', 'points': '5', 'speed': 'slow'}
+{'color': 'green', 'points': '5', 'speed': 'slow'}
+...
+```
+
+>进一步扩展这个循环，在其中添加一个`elif`代码块，将黄色外星人改为移动速度快且值15分的红色外星人：
+
+```
+for alien in aliens[0:3]: 
+    if alien['color'] == 'green': 
+        alien['color'] = 'yellow' 
+        alien['speed'] = 'medium' 
+        alien['points'] = 10 
+    elif alien['color'] == 'yellow': 
+        alien['color'] = 'red' 
+	alien['speed'] = 'fast'
+	alien['points'] = 15
+```
+
+### 在字典中存储列表
+
