@@ -347,4 +347,52 @@ Phil, thank you for taking the poll.
 Sarah, thank you for taking the poll.
 ```
 
-###
+### 遍历字典中的所有值
+
+如果主要对字典包含的值感兴趣，可使用方法`values()`来返回一个值列表，不包含任何键。
+
+>获得一个列表，其中只包含被调查者选择的各种语言，而不包含被调查者的名字：
+>
+>`for`语句提取字典中的每个值，并将其依次赋给变量`language`。通过打印这些值，就获得了一个包含被调查者所选择语言的列表：
+
+```
+favorite_languages = {
+    'jen':'python',
+    'sarah':'c',
+    'edward':'ruby',
+    'phil':'python',
+    }
+print("The following languages have been mentioned:")
+for language in favorite_languages.values():
+    print(language.title())
+    
+---
+The following languages have been mentioned:
+Python
+C
+Ruby
+Python
+```
+>这种做法提取字典中所有的值，而没有考虑是否重复。
+>
+>涉及的值很少时，这也许不是问题，但如果被调查者很多，最终的列表可能包含大量重复项。
+>
+>为剔除重复项，可使用集合`set`。集合中的每个元素都必须是独一无二的：
+
+```
+favorite_languages = {
+    'jen':'python',
+    'sarah':'c',
+    'edward':'ruby',
+    'phil':'python',
+    } 
+print("The following languages have been mentioned:") 
+for language in set(favorite_languages.values()): 
+    print(language.title())
+    
+---
+The following languages have been mentioned:
+Ruby
+Python
+C
+```
