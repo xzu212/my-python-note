@@ -10,3 +10,4 @@
 
 [字典](https://github.com/xzu212/my-python-note/blob/main/note05.md)
 
+[用户输入和while循环](https://github.com/xzu212/my-python-note/blob/main/note06.md)
