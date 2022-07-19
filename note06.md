@@ -28,3 +28,8 @@ name = input(prompt)
 print(f"\nHello,{name}!")
 
 ---
+If you tell us who you are,we can personalize the messages
+What is your first name?Eric
+
+Hello,Eric!
+```
