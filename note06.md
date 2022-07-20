@@ -33,3 +33,7 @@ What is your first name?Eric
 
 Hello,Eric!
 ```
+
+### 使用`int()`来获取输入值
+
+使用函数`input()`时，Python将用户输入解读为字符串。
