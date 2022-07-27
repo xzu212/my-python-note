@@ -46,22 +46,6 @@ How old are you? 21
 ```
 用户输入的是数21，但我们请求Python提供变量age的值时，它返回的是'21' ——用户输入数值的字符串表示。
 
-Python将输入解读成了字符串，因为这个数用引号括起了。如果只想打印输入，这一点问题都没有；但如果试图将输入作为数来使用，就会引发错误。
-
-```
->>>age  = input("How old are you ?")
-How old are you ?21
->>>age >= 18
----------------------------------------------------------------------------
-TypeError                                 Traceback (most recent call last)
-Input In [2], in <cell line: 1>()
-----> 1 age >= 18
-
-TypeError: '>=' not supported between instances of 'str' and 'int'
-```
-
-试图将输入用于数值比较时，Python会引发错误，因为它无法将字符串和整数进行比较。
-
 >可使用函数`int()`解决这个问题，它让Python将输入视为数值。函数`int()`将数的字符串表示转换为数值表示。
 
 ```
@@ -97,3 +81,22 @@ The number 42 is even.
 ```
 
 ## while循环简介
+
+`for`循环用于针对集合中的每个元素都执行一个代码块，而`while`循环则不断运行，直到指定的条件不满足为止。
+
+### 使用while循环
+
+可使用`while`循环来数数，下面的`while`循环从1数到5：
+
+```
+current_number = 1
+
+while current_number <= 5:
+    print(current_number)
+    current_number += 1
+    
+1
+2
+3
+4
+5
