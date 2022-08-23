@@ -77,6 +77,7 @@ if number % 2 == 0 :
 else:
     print(f"\nThe number {number} is odd.")
 
+---
 The number 42 is even.
 ```
 
@@ -94,9 +95,67 @@ current_number = 1
 while current_number <= 5:
     print(current_number)
     current_number += 1
-    
+
+---
 1
 2
 3
 4
 5
+```
+
+### 让用户选择何时退出
+
+>可以使用while循环让程序在用户愿意时不断运行，如下面的程序所示。在其中定义了一个退出值，只要用户输入的不是这个值，程序就将接着运行：
+
+```
+prompt = "\nTell me something, and I will repeat it back to you:"
+prompt += "\nEnter 'quit' to end the program."
+message = ""
+while message != 'quit':
+    message = input(prompt)
+    print(message)
+    
+---
+Tell me something, and I will repeat it back to you:
+Enter 'quit' to end the program.Hello ,everyone!
+Hello ,everyone!
+
+Tell me something, and I will repeat it back to you:
+Enter 'quit' to end the program.Hello ,again!
+Hello ,again!
+
+Tell me something, and I will repeat it back to you:
+Enter 'quit' to end the program.quit
+quit
+```
+
+它将单词'quit'作为一条消息打印了出来。修复这种问题，只需使用一个简单的if测试：
+
+```
+prompt = "\nTell me something, and I will repeat it back to you:"
+prompt += "\nEnter 'quit' to end the program."
+message = ""
+while message != 'quit':
+    message = input(prompt)
+    
+    if message !='quit':
+        print(message)
+
+---
+Tell me something, and I will repeat it back to you:
+Enter 'quit' to end the program.Hello , everyone !
+Hello , everyone !
+
+Tell me something, and I will repeat it back to you:
+Enter 'quit' to end the program.Hello , again.
+Hello , again.
+
+Tell me something, and I will repeat it back to you:
+Enter 'quit' to end the program.quit
+```
+
+### 使用标志
+
+在要求很多条件都满足才继续运行的程序中，可定义一个变量，用于判断整个程序是否处于活动状态。这个变量称为标志(flag)。可以让程序在标志为True时继续运行，并在任何事件导致标志的值为False时让程序停止运行。这样，在while语句中就只需检查一个条件：标志的当前值是否为True。然后将所有其他测试（是否发生了应将标志设置为False的事件）都放在其他地方，从而让程序更整洁。
+    
