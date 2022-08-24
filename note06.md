@@ -157,5 +157,42 @@ Enter 'quit' to end the program.quit
 
 ### 使用标志
 
-在要求很多条件都满足才继续运行的程序中，可定义一个变量，用于判断整个程序是否处于活动状态。这个变量称为标志(flag)。可以让程序在标志为True时继续运行，并在任何事件导致标志的值为False时让程序停止运行。这样，在while语句中就只需检查一个条件：标志的当前值是否为True。然后将所有其他测试（是否发生了应将标志设置为False的事件）都放在其他地方，从而让程序更整洁。
+在要求很多条件都满足才继续运行的程序中，可定义一个变量，用于判断整个程序是否处于活动状态。这个变量称为标志(flag)。
+
+可以让程序在标志为True时继续运行，并在任何事件导致标志的值为False时让程序停止运行。
+
+这样，在while语句中就只需检查一个条件：标志的当前值是否为True。然后将所有其他测试（是否发生了应将标志设置为False的事件）都放在其他地方，从而让程序更整洁。
+
+>添加一个标志,将其命名为active，用于判断程序是否应继续运行：
+
+```
+prompt = "\nTell me something, and I will repeat it back to you:"
+prompt += "\nEnter 'quit' to end the program."
+
+active = True
+while active:
+    message = input(prompt)
     
+    if message == 'quit':
+        active = False
+    else:
+        print(message)
+```
+
+### 使用`break`退出循环
+
+break语句用于控制程序流程，可用来控制哪些代码行将执行、哪些代码行不执行，从而让程序按你的要求执行你要执行的代码。
+
+```
+prompt = "\nPlease enter the name of a city you have visited:"
+prompt += "\nEnter 'quit' when you are finished."
+
+while True:
+    city = input(prompt)
+    
+    if city == 'quit':
+        break
+    else:
+        print(f"I'd love to go to {city.title()}!")
+ ```
+                                                  
