@@ -196,3 +196,101 @@ while True:
         print(f"I'd love to go to {city.title()}!")
  ```
                                                   
+### 在循环中使用`continue`
+
+要返回循环开头，并根据条件测试结果决定是否继续执行循环，可使用`continue`语句，它不像`break`语句那样不再执行余下的代码 并退出整个循环。
+
+```
+current_number = 0
+while current_number < 10:
+    current_number += 1
+    if current_number % 2 == 0:
+        continue
+    print(current_number)
+    
+---
+1
+3
+5
+7
+9
+```
+
+>如果结果为0（意味着current_number可被2整除），就执行continue语句，让Python忽略余下的代码，并返回循环的开头。
+>
+>如果当前的数不能被2整除，就执行循环中余下的代码，将这个数打印出来。
+
+### 避免无限循环
+
+```
+x = 1
+while x <= 5:
+    print (x)
+    x += 1
+
+---
+1
+2
+3
+4
+5
+```
+>如果不小心遗漏了代码行`x += 1`，这个循环将没完没了地运行。
+
+## 使用`while`循环处理列表和字典
+
+要记录大量的用户和信息，需要在while循环中使用列表和字典。
+
+`for`循环是一种遍历列表的有效方式，但不应在`for`循环中修改列表，否则将导致Python难以跟踪其中的元素。
+
+要在遍历列表的同时对其进行修改，可使用`while`循环。通过将while循环同列表和字典结合起来使用，可收集、存储并组织大量输入，供以后查看和显示。
+
+### 在列表之间移动元素
+
+假设有一个列表包含新注册但还未验证的网站用户。验证这些用户后，如何将他们移到另一个已验证用户列表中呢？
+
+一种办法是使用一个while循环，在验证用户的同时将其从未验证用户列表中提取出来，再将其加入另一个已验证用户列表中。代码类似这样：
+
+```
+# 首先，创建一个待验证用户列表
+# 和一个用于存储已验证用户的空列表
+unconfirmed_users = ['alice','brian','candace']
+confirmed_users = []
+
+# 验证每个用户，直到没有未验证用户为止。
+# 将每个经过验证的用户都移动到已验证用户列表中。
+while unconfirmed_users:
+    current_user = unconfirmed_users.pop()
+    
+    print (f"Verifying user : {current_user.title()}")
+    confirmed_users.append(current_user)
+    
+# 显示所有已验证的用户
+print("\nThe following users have been confirmed:")
+for confirmed_user in confirmed_users:
+    print(confirmed_user.title())
+    
+---
+Verifying user : Candace
+Verifying user : Brian
+Verifying user : Alice
+
+The following users have been confirmed:
+Candace
+Brian
+Alice
+```
+
+>首先创建一个未验证用户列表，其中包含用户Alice、Brian和Candace，还创建了一个空列表，用于存储已验证的用户。
+>
+>while循环将不断运行，直到列表unconfirmed_users变成空的。在此循环中，方法pop()以每次一个的方式从列表unconfirmed_users末尾删除未验证的用户。
+>
+>由于Candace位于列表unconfirmed_users末尾，其名字将首先被删除、赋给变量current_user并加入列表confirmed_users中。接下来是Brian，然后是Alice。
+
+###　删除为特定值的所有列表元素
+
+使用函数remove()来删除列表中的特定值，之所以可行，是因为要删除的值只在列表中出现一次。  
+
+如果要删除列 表中所有为特定值的元素，该怎么办呢？
+
+```
