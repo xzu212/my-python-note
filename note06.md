@@ -309,3 +309,49 @@ print(pets)
 
 ### 使用用户输入来填充字典
 
+可使用`while`循环提示用户输入任意多的信息。
+
+>创建一个调查程序，其中的循环每次执行时都提示输入被调查者的名字和回答。将收集的数据存储在一个字典中，以便将回答同被调查者关联起来：
+
+```
+responses = {}
+
+# 设置一个标志，指出调查是否继续。
+polling_active = True
+
+while polling_active:
+    # 提示输入被调查者的名字和回答。
+    name = input("\nWhat is your name? ")
+    response = input("Which mountain would you like to climb someday? ")
+    
+    # 将回答存储在字典中。
+    
+    responses[name] = response
+    
+    # 看看是否还有人要参与调查。
+    repeat = input("Would you like to let another person respond? (yes/no) ")
+    if repeat == 'no':
+        polling_active = False
+        
+# 调查结束，显示结果。
+print("\n--- Poll Results ---")
+for name, response in responses.items():
+    print(f"{name} would like to climb {response}.")
+    
+---
+ What is your name? Eric
+Which mountain would you like to climb someday? Denali
+Would you like to let another person respond? (yes/no) yes
+
+What is your name? Lynn
+Which mountain would you like to climb someday? Devil 's Thumb
+Would you like to let another person respond? (yes/no) no
+
+--- Poll Results ---
+Eric would like to climb Denali.
+Lynn would like to climb Devil 's Thumb.
+```
+
+>首先定义了一个空字典(`responses`),并设置了一个标志(`polling_active`)用于指出调查是否继续。只要`polling_active`为`True`，Python就运行`while`循环中的代码。
+>
+>在这个循环中，提示用户输入其名字及其喜欢爬哪座山，将这些信息存储在字典`responses`，然后询问用户是否继续调查。如果用户输入`yes`，程序将再次进入`while`循环；如果用户输入`no`，标志`polling_active`将被设置为`False`，而`while`循环将就此结束。最后一个代码块显示调查结果。
