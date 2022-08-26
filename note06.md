@@ -287,7 +287,7 @@ Alice
 >
 >由于Candace位于列表unconfirmed_users末尾，其名字将首先被删除、赋给变量current_user并加入列表confirmed_users中。接下来是Brian，然后是Alice。
 
-###　删除为特定值的所有列表元素
+### 删除为特定值的所有列表元素
 
 使用函数remove()来删除列表中的特定值，之所以可行，是因为要删除的值只在列表中出现一次。  
 
