@@ -306,3 +306,6 @@ print(pets)
 ['dog', 'cat', 'dog', 'goldfish', 'cat', 'rabbit', 'cat']
 ['dog', 'dog', 'goldfish', 'rabbit']
 ```
+
+### 使用用户输入来填充字典
+
