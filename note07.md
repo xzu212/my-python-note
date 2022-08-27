@@ -14,3 +14,24 @@ greet_user()
 ---
 Hello!
 ```
+
+### 向函数传递信息
+
+```
+def greet_user(username):
+    """显示简单的问候语"""
+    print(f"Hello,{username.title()}!")
+    
+greet_user('jesse')
+
+---
+Hello,Jesse!
+```
+
+### 实参和形参
+
+在函数greet_user()的定义中，变量`username`是一个形参(parameter)，即函数完成工作所需的信息。
+
+在代码greet_user('jesse') 中，值'jesse'是一个实参(argument)，即调用函数时传递给函数的信息。
+
+在greet_user('jesse')中，将实参'jesse'传递给了函数greet_user()，这个值被赋给了形参username。
