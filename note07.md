@@ -35,3 +35,30 @@ Hello,Jesse!
 在代码`greet_user('jesse')`中，值`'jesse'`是一个实参(`argument`)，即调用函数时传递给函数的信息。
 
 在`greet_user('jesse')`中，将实参`'jesse'`传递给了函数`greet_user()`，这个值被赋给了形参`username`。
+
+## 传递实参
+
+函数定义中可能包含多个形参，因此函数调用中也可能包含多个实参。
+
+向函数传递实参的方式很多：可使用位置实参，这要求实参的顺序与形参的顺序相同；也可使用关键字实参，其中每个实参都由变量名和值组成；还可使用列表和字典。
+
+### 位置实参
+
+调用函数时，Python必须将函数调用中的每个实参都关联到函数定义中的一个形参。
+
+为此，最简单的关联方式是基于实参的顺序。这种关联方式称为**位置实参**。
+
+```
+def describe_pet(animal_type,pet_name):
+    """显示宠物的信息"""
+    print(f"I have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+
+
+describe_pet('hamster','harry')
+
+---
+I have a hamster.
+My hamster's name is Harry.
+```
+ 
