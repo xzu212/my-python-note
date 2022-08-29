@@ -158,3 +158,106 @@ describe_pet(animal_type='hamster', pet_name='harry')
 
 ## 返回值
 
+函数可以处理一些数据，并返回一个或一组值。函数返回的值称为**返回值**。在函数中，可使用`return`语句将值返回到调用函数的代码行。
+返回值让你能够将程序的大部分繁重工作移到函数中去完成，从而简化主程序。
+
+### 返回简单值
+
+```
+def get_formatted_name(first_name,last_name):
+    """返回整洁的姓名"""
+    full_name = f"{first_name} {last_name}"
+    return full_name.title()
+
+musician = get_formatted_name('jimi', 'hendrix')
+print(musician)
+
+---
+Jimi Hendrix
+```
+
+### 让实参变成可选的
+
+>扩展函数`get_formatted_name()`，使其同时处理中间名：
+
+```
+def get_formatted_name(first_name,middle_name,last_name):
+    """返回整洁的姓名"""
+    full_name = f"{first_name} {middle_name} {last_name}"
+    return full_name.title()
+
+musician = get_formatted_name('john','lee','hooker')
+print(musician)
+
+---
+John Lee Hooker
+```
+>只要同时提供名、中间名和姓，这个函数就能正确运行。
+
+并非所有的人都有中间名，但如果调用这个函数时只提供了名和姓，它将不能正确运行。
+
+为了让中间名变成可选的，可给形参`middle_name`指定一个空的默认值，并在用户没有提供中间名时不使用这个形参。
+
+为让`get_formatted_name()`在没有提供中间名时依然可行，可将形参`middle_name`的默认值设置为空字符串，并将其移到形参列表的末尾：
+
+```
+def get_formatted_name(first_name,last_name,middle_name=''):
+    """返回整洁的姓名"""
+    if middle_name:
+        full_name = f"{first_name} {middle_name} {last_name}"
+    else:
+        full_name = f"{first_name} {last_name}"
+    return full_name.title()
+
+musician = get_formatted_name('jimi','hendrix')
+print(musician)
+
+musician = get_formatted_name('john','hooker','lee')
+print(musician)
+
+---
+Jimi Hendrix
+John Lee Hooker
+```
+调用这个函数时，如果只想指定名和姓，调用起来将非常简单。
+
+如果还要指定中间名，就必须确保它是最后一个实参，这样Python才能正确地将位置实参关联到形参。
+
+### 返回字典
+
+函数可返回任何类型的值，包括列表和字典等较复杂的数据结构。
+
+```
+def build_person(first_name,last_name):
+    """返回一个字典，其中包含有关一个人的信息"""
+    person = {'first': first_name,'last': last_name}
+    return person
+
+musician = build_person('jimi', 'hendrix')
+print(musician)
+
+---
+{'first': 'jimi', 'last': 'hendrix'}
+```
+
+>下面的修改让你能存储年龄：
+
+```
+def build_person(first_name,last_name,age=None):
+    """返回一个字典，其中包含有关一个人的信息"""
+    person = {'first': first_name,'last': last_name}
+    if age:
+        person['age'] = age
+    return person
+
+musician = build_person('jimi','hendrix',age=27)
+print(musician)
+
+---
+{'first': 'jimi', 'last': 'hendrix', 'age': 27}
+```
+
+### 结合使用函数和while循环
+
+>结合使用函数`get_formatted_name()`和`while`循环，以更正式的方式问候用户：
+
