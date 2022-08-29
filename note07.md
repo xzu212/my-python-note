@@ -62,3 +62,99 @@ I have a hamster.
 My hamster's name is Harry.
 ```
  
+1. **多次调用函数**
+
+可以根据需要调用函数任意次。要再次描述，只需要再次调用即可：
+
+```
+def describe_pet(animal_type,pet_name):
+    """显示宠物的信息"""
+    print(f"I have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+    
+describe_pet('hamster','harry')
+describe_pet('dog','willie')
+
+---
+I have a hamster.
+My hamster's name is Harry.
+I have a dog.
+My dog's name is Willie.
+```
+
+### 关键字实参
+
+关键字实参是传递给函数的名称值对。
+
+因为直接在实参中将名称和值关联起来，所以向函数传递实参时不会混淆。
+
+关键字实参让你无须考虑函数调用中的实参顺序，还清楚地指出了函数调用中各个值的用途。
+
+```
+def describe_pet(animal_type,pet_name):
+    """显示宠物的信息"""
+    print(f"I have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+    
+describe_pet(animal_type='hamster',pet_name='harry')
+
+---
+I have a hamster.
+My hamster's name is Harry.
+```
+
+下面两个函数调用是等效的
+
+```
+describe_pet(animal_type='hamster',pet_name='harry')
+describe_pet(pet_name='harry',animal_type='hamster')
+```
+
+### 默认值
+
+编写函数时，可给每个形参指定默认值。在调用函数中给形参提供了实参时，Python将使用指定的实参值；否则，将使用形参的默认值。
+
+因此，给形参指定默认值后，可在函数调用中省略相应的实参。使用默认值可简化函数调用，还可清楚地指出函数的典型用法。
+
+>例如，如果发现调用`describe_pet()`时，描述的大多是小狗，就可将形参`animal_type`的默认值设置为`'dog'`。这样，调用`describe_pet()`来描述小狗时，就可不提供这种信息：
+
+```
+def describe_pet(pet_name,animal_type='dog'):
+    """显示宠物的信息"""
+    print(f"I have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+    
+describe_pet(pet_name='willie')
+
+---
+I have a dog.
+My dog's name is Willie.
+```
+> 给形参`animal_type`指定了默认值`'dog'`，调用这个函数时，如果没有给`animal_type`指定值，Python就将把这个形参设置为`'dog'`。
+
+### 等效的函数调用
+
+```
+def describe_pet(pet_name, animal_type='dog'):
+```
+>基于这种定义，在任何情况下都必须给`pet_name`提供实参。指定该实参时可采用位置方式，也可采用关键字方式。
+>如果要描述的动物不是小狗，还必须在函数调用中给`animal_type`提供实参。同样，指定该实参时可以采用位置方式，也可采用关键字方式。
+
+下面对这个函数的所有调用都可行：
+
+```
+# 一条名为Willie的小狗。 
+describe_pet('willie') 
+describe_pet(pet_name='willie') 
+# 一只名为Harry的仓鼠。 
+describe_pet('harry', 'hamster') 
+describe_pet(pet_name='harry', animal_type='hamster') 
+describe_pet(animal_type='hamster', pet_name='harry')
+```
+
+### 避免实参错误
+
+提供的实参多于或少于函数完成工作所需的信息时，将出现实参不匹配错误。
+
+## 返回值
+
