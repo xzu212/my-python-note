@@ -537,8 +537,139 @@ print(user_profile)
 
 在这个函数中，可以像访问其他字典那样访问`user_info`中的名称值对。 
 
-在`build_profile()`的函数体内，将名和姓加入了字典`user_info`中，因为总是会从用户那里收到这两项信息，而这两项信息没有放到这个字典中。接下来，将字 典user_info 返回到函数调用行。 我们调用build_profile() ，向它传递名（'albert' ）、姓 （'einstein' ）和两个键值对（location='princeton' 和 field='physics' ），并将返回的user_info 赋给变量 user_profile ，再打印该变量：
+在`build_profile()`的函数体内，将名和姓加入了字典`user_info`中，因为总是会从用户那里收到这两项信息，而这两项信息没有放到这个字典中。接下来，将字典`user_info`返回到函数调用行。 
+
+我们调用`build_profile()`，向它传递名`('albert')`、姓`('einstein')`和两个键值对`(location='princeton'和field='physics')`，并将返回的`user_info`赋给变量`user_profile`，再打印该变量：
 
 ```
 {'location': 'princeton', 'field': 'physics', 'first_name': 'albert', 'last_name': 'einstein'}
+```
+
+## 将函数存储在模块中
+
+可以将函数存储在称为模块的独立文件中，再将模块导入到主程序中。`import`语句允许在当前运行的程序文件中使用模块中的代码。
+
+### 导入整个模块
+
+要让函数是可导入的，得先创建模块。模块是扩展名为.py的文件，包含要导入到程序中的代码。
+
+>下面来创建一个包含函数`make_pizza()`的模块。为此，将文件**pizza.py**中除函数`make_pizza()`之外的其他代码删除：
+
+```
+def make_pizza(size,*toppings):
+    """概述要制作的比萨。"""
+    print(f"\nMaking a {size}-inch pizza with the following toppings:")
+    for topping in toppings:
+        print(f"- {topping}")
+```
+
+接下来，在**pizza.py**所在的目录中创建一个名为**making_pizzas.py**的文件。这个文件导入刚创建的模块，再调用`make_pizza()`两次：
+
+```
+import pizza
+
+pizza.make_pizza(16, 'pepperoni')
+pizza.make_pizza(12, 'mushrooms', 'green peppers', 'extra cheese')
+```
+
+Python读取这个文件时，代码行`import pizza`让Python打开文件**pizza.py**，并将其中的所有函数都复制到这个程序中。
+
+看不到复制的代码，因为在这个程序即将运行时，Python在幕后复制了这些代码。只需知道，在**making_pizzas.py**中，可使用**pizza.py**中定义的所有函数。 
+
+要调用被导入模块中的函数，可指定被导入模块的名称`pizza`和函数名`make_pizza()`，并用句点分隔。这些代码的输出与没有导入模块的原始程序相同：
+
+```
+Making a 16-inch pizza with the following toppings:
+- pepperoni
+
+Making a 12-inch pizza with the following toppings:
+- mushrooms
+- green peppers
+- extra cheese
+```
+
+### 导入特定的函数
+
+导入模块中的特定函数，方法如下：
+
+```
+from module_name import function_name
+```
+
+用逗号分隔函数名，可根据需要从模块中导入任意数量的函数：
+
+```
+from module_name import function_0, function_1, function_2
+```
+
+对于前面的**making_pizzas.py**示例，如果只想导入要使用的函数，代码如下：
+
+```
+from pizza import make_pizza 
+make_pizza(16, 'pepperoni') 
+make_pizza(12, 'mushrooms', 'green peppers', 'extra cheese')
+```
+
+使用这种语法时，调用函数时无须使用句点。由于在`import`语句中显式地导入了函数`make_pizza()`，调用时只需指定其名称即可。
+
+### 使用as给函数指定别名
+
+要导入函数的名称可能与程序中现有的名称冲突，或者函数的名称太长，可指定别名：
+
+```
+from pizza import make_pizza as mp
+
+mp(16, 'pepperoni')
+mp(12, 'mushrooms', 'green peppers', 'extra cheese')
+```
+
+### 使用as给模块指定别名
+
+通过给模块指定简短的别名，使调用模块中的函数更轻松。
+
+```
+import pizza as p
+
+p.make_pizza(16, 'pepperoni')
+p.make_pizza(12, 'mushrooms', 'green peppers', 'extra cheese')
+```
+
+### 导入模块中的所有函数
+
+使用星号`(*)`运算符可让Python导入模块中的所有函数：
+
+```
+from pizza import *
+
+make_pizza(16, 'pepperoni')
+make_pizza(12, 'mushrooms', 'green peppers', 'extra cheese')
+```
+
+## 函数编写指南
+
+1. 应给函数指定描述性名称，且只在其中使用小写字母和下划线。
+2. 每个函数都应包含简要地阐述其功能的注释。该注释应紧跟在函数定义后面，并采用文档字符串格式。
+
+* 给形参指定默认值时，等号两边不要有空格：
+
+```
+def function_name(parameter_0, parameter_1='default value')
+```
+
+对于函数调用中的关键字实参，也应遵循这种约定：
+
+```
+function_name(value_0, parameter_1='value')
+```
+
+* 代码行的长度不要超过79字符，这样只要编辑器窗口适中，就能看到整行代码。如果形参很多，导致函数定义的长度超过了79字符，可在函数定义中输入左括号后按回车键，并在下一行按两次Tab键，从而将形参列表和只缩进一层的函数体区分开来。
+
+```
+def function_name(
+                parameter_0, parameter_1, parameter_2,
+                parameter_3, parameter_4, parameter_5):
+function body...
+```
+
+* 所有`import`语句都应放在文件开头。唯一例外的情形是，在文件开头使用了注释来描述整个程序。
 ```
