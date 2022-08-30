@@ -134,3 +134,27 @@ Lucy is now sitting.
 
 编写一个表示汽车的类。它存储了有关汽车的信息，还有一个汇总这些信息的方法：
 ```
+class Car:
+    """一次模拟汽车的简单尝试"""
+
+    def __init__(self, make, model, year):
+        """初始化描述汽车的属性"""
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def get_descriptive_name(self):
+        """返回整洁的描述性信息"""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+my_new_car = Car('audi', 'a4', '2019')
+print(my_new_car.get_descriptive_name())
+```
+* **定义方法`__init__()`。** 与前面的Dog类中一样，这个方法的第一个形参为`self`。该方法还包含另外三个形参：`make`、`model`和`year`。方法`__init__()`接受这些形参的值，并将它们赋给根据这个类创建的实例的属性。创建新的Car实例时，需要指定其制造商、型号和生产年份。
+* **定义名为``get_descriptive_name() ``的方法。** 使用属性`year`、`make`和`model`创建一个对汽车进行描述的字符串，让我们无须分别打印每个属性的值。为在这个方法中访问属性的值，使用了`self.make`、`self.model`和`self.year`。
+
+* 根据Car类创建了一个实例，并将其赋给变量`my_new_car`。调用方法`get_descriptive_name()`，指出我们拥有一辆什么样的汽车：
+
+```
+2019 Audi A4
+```
