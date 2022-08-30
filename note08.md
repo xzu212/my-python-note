@@ -158,3 +158,43 @@ print(my_new_car.get_descriptive_name())
 ```
 2019 Audi A4
 ```
+
+### 给属性指定默认值
+
+创建实例时，有些属性无须通过形参来定义，可在方法`__init__()`中为其指定默认值。 
+
+>下面来添加一个名为`odometer_reading`的属性，其初始值总是为`0`。还添加一个名为`read_odometer()`的方法，用于读取汽车的里程表：
+
+```
+class Car:
+    """一次模拟汽车的简单尝试"""
+
+    def __init__(self, make, model, year):
+        """初始化描述汽车的属性"""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """返回整洁的描述性信息"""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        """打印一条指出汽车里程的消息"""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+my_new_car = Car('audi', 'a4', '2019')
+print(my_new_car.get_descriptive_name())
+my_new_car.read_odometer()
+```
+
+>创建一个名为`odometer_reading`的属性，并将其初始值设置为0。定义一个名为`read_odometer()`的方法，能够获悉汽车的里程。
+
+```
+2019 Audi A4
+This car has 0 miles on it.
+```
+
+### 修改属性的值
