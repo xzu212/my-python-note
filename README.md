@@ -13,3 +13,5 @@
 [用户输入和while循环](https://github.com/xzu212/my-python-note/blob/main/note06.md)
 
 [函数](https://github.com/xzu212/my-python-note/blob/main/note07.md)
+
+[类](https://github.com/xzu212/my-python-note/blob/main/note08.md)
