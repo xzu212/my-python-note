@@ -198,3 +198,82 @@ This car has 0 miles on it.
 ```
 
 ### 修改属性的值
+
+1. 直接修改属性的值
+
+要修改属性的值，最简单的方式是通过实例直接访问它。
+>下面的代码直接将里程表读数设置为23：
+
+```
+class Car:
+    --snip--
+
+my_new_car = Car('audi', 'a4', '2019')
+print(my_new_car.get_descriptive_name())
+
+my_new_car.odometer_reading = 23
+my_new_car.read_odometer()
+```
+
+2. 通过方法修改属性的值
+
+```
+class Car: 
+    --snip--
+    def update_odometer(self, mileage):
+        """将里程表读数设置为指定的值"""
+        self.odometer_reading = mileage
+
+
+my_new_car = Car('audi', 'a4', '2019')
+print(my_new_car.get_descriptive_name())
+
+my_new_car.update_odometer(23)
+my_new_car.read_odometer()
+```
+添加方法`update_odometer()`。这个方法接受一个里程值，并将其赋给`self.odometer_reading`。
+用`update_odometer()`，并向它提供了实参23(该实参对应于方法定义中的形参`mileage`)。它将里程表读数设置为23，而方法read_odometer()打印该读数：
+```
+2019 Audi A4
+This car has 23 miles on it.
+```
+
+>对方法`update_odometer()`进行扩展，使其在修改里程表读数时做些额外的工作。下面来添加一些逻辑，禁止任何人将里程表读数往回调：
+```
+class:
+    --snip--
+    def update_odometer(self, mileage):
+        """将里程表读数设置为指定的值，禁止将里程表读数回调"""
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+```
+现在，`update_odometer()`在修改属性前检查指定的读数是否合理。如果新指定的里程`mileage`大于或等于原来的里程`self.odometer_reading`，就将里程表读数改为新指定的里程；否则发出警告，指出不能将里程表往回调。
+
+3. 通过方法对属性的值进行递增
+
+有时候需要将属性值递增特定的量，而不是将其设置为全新的值。假设我们购买了一辆二手车，且从购买到登记期间增加了100英里的里程。下面的方法让我们能够传递这个增量，并相应地增大里程表读数：
+```
+class Car:
+    --snip--
+    
+    def increment_odometer(self, miles):
+        """将里程表读数增加指定的量"""
+        self.odometer_reading += miles
+        
+my_used_car = Car('subaru', 'outback', 2015)
+print(my_used_car.get_descriptive_name())
+
+my_used_car.update_odometer(23_500)
+my_used_car.read_odometer()
+
+my_used_car.increment_odometer(100)
+my_used_car.read_odometer()
+```
+新增的方法`increment_odometer()`接受一个单位为英里的数，并将其加入`self.odometer_reading`中。创建一辆二手车`my_used_car`。调用方法`update_odometer()`并传入23_500，将这辆二手车的里程表读数设置为23 500。调用`increment_odometer()`并传入100 ，以增加从购买到登记期间行驶的100英里：
+```
+2015 Subaru Outback
+This car has 23500 miles on it.
+This car has 23600 miles on it.
+```
