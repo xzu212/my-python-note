@@ -437,3 +437,36 @@ my_tesla.battery.describe_battery()
 在`ElectricCar`类中，添加了一个名为`self.battery`的属性。这行代码让Python创建一个新的`Battery`实例（因为没有指定容量，所以为默认值75），并将该实例赋给属性`self.battery`。每当方法`__init__()`被调用时，都将执行该操作，因此现在每个`ElectricCar`实例都包含一个自动创建的`Battery `实例。 
 
 我们创建一辆电动汽车，并将其赋给变量`my_tesla`。描述电瓶时，需要使用电动汽车的属性`battery`：
+```
+my_tesla.battery.describe_battery()
+```
+这行代码让Python在实例`my_tesla`中查找属性`battery`，并对存储在该属性中的`Battery`实例调用方法`describe_battery()`。
+
+输出与前面相同。
+
+这看似做了很多额外的工作，但是现在想多详细地描述电瓶都可以，且不会导致`ElectricCar`类混乱不堪。下面再给`Battery`类添加一个方法，它根据电瓶容量报告汽车的续航里程：
+
+```
+class Car: 
+    --snip--
+    
+class Battery: 
+    --snip--
+    
+    def get_range(self):
+        """打印一条消息，指出电瓶的续航里程"""
+        if self.battery_size == 75:
+            range =260
+        elif self.battery_size ==100:
+            range = 315
+
+        print(f"This car can go about {range} miles on a full charge.")
+        
+class ElectricCar(Car):
+    --snip--
+    
+my_tesla = ElectricCar('tesla', 'model s', '2019')
+print(my_tesla.get_descriptive_name())
+my_tesla.battery.describe_battery()
+my_tesla.battery.get_range()
+```
