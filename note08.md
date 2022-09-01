@@ -335,7 +335,105 @@ print(my_tesla.get_descriptive_name())
 
 ### 给子类定义属性和方法
 
-让一个类继承另一个类后，就可以添加区分子类和父类所需的新属 性和新方法了。 
+让一个类继承另一个类后，就可以添加区分子类和父类所需的新属性和新方法了。 
 
 >下面来添加一个电动汽车特有的属性(电瓶)，以及一个描述该属性的方法。我们将存储电瓶容量，并编写一个打印电瓶描述的方法：
 
+```
+class Car:
+    --snip--
+
+class ElectricCar(Car):
+    """电动汽车的独特之处"""
+
+    def __init__(self, make, model, year):
+        """
+        初始化父类的属性
+        再初始化电动汽车特有的属性
+        """
+        super().__init__(make, model, year)
+        self.battery_size = 75
+
+    def describe_battery(self):
+        """打印一条描述电瓶容量的消息"""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+
+my_tesla = ElectricCar('tesla', 'model s', '2019')
+print(my_tesla.get_descriptive_name())
+my_tesla.describe_battery()
+```
+>添加了新属性`self.battery_size`，并设置其初始值`75`，根据`ElectricCar`类创建的所有实例都将包含该属性，但所有`Car`实例都不包含它。
+>还添加了一个名为`describe_battery`的方法，打印有关电瓶的信息。
+>调用这个方法，将看到一条电动汽车特有的描述：
+
+```
+2019 Tesla Model S
+This car has a 75-kWh battery.
+```
+
+对于`ElectricCar`类的特殊程度没有任何限制。模拟电动汽车时，可根据所需的准确程度添加任意数量的属性和方法。
+
+如果一个属性或方法是任何汽车都有的，而不是电动汽车特有的，就应将其加入到`Car`类而非`ElectricCar`类中。
+
+这样，使用`Car`类的人将获得相应的功能，而`ElectricCar`类只包含处理电动汽车特有属性和行为的代码。
+
+### 重写父类的方法
+
+对于父类的方法，只要它不符合子类模拟的实物的行为，都可以进行重写。为此，可在子类中定义一个与要重写的父类方法同名的方法。这样，Python将不会考虑这个父类方法，而只关注你在子类中定义的相应方法。
+
+假设`Car`类有一个名为`fill_gas_tank()`的方法，它对全电动汽车来说毫无意义，因此你可能想重写它。下面演示了一种重写方式：
+
+```
+class ElectricCar:
+    --snip--
+    
+    def fill_gas_tank(self):
+        """电动汽车没有油箱"""
+        print("This car doesn't need a gas tank!")
+```
+如果有人对电动汽车调用方法`fill_gas_tank()`，Python将忽略`Car`类中的方法`fill_gas_tank()`，转而运行上述代码。
+
+### 将实例用作属性
+
+使用代码模拟实物时，给类添加的细节越来越多：属性和方法清单以及文件都越来越长。在这种情况下，可能需要将类的一部分提取出来，作为一个独立的类。可以将大型类拆分成多个协同工作的小类。
+
+例如，不断给`ElectricCar`类添加细节时，我们可能发现其中包含很多专门针对汽车电瓶的属性和方法。在这种情况下，可将这些属性和方法提取出来，放到一个名为`Battery`的类中，并将一个`Battery`实例作为`ElectricCar`类的属性：
+```
+class Car:
+    --snip--
+    
+class Battery:
+    """一次模拟电动汽车点评的简单尝试。"""
+
+    def __init__(self, battery_size=75):
+        """初始化电瓶的属性"""
+        self.battery_size = battery_size
+
+    def describe_battery(self):
+        """就打印一条描述电瓶容量的消息"""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+
+
+class ElectricCar(Car):
+    """电动汽车的独特之处"""
+
+    def __init__(self, make, model, year):
+        """
+        初始化父类的属性
+        再初始化电动汽车特有的属性
+        """
+        super().__init__(make, model, year)
+        self.battery = Battery()
+
+
+my_tesla = ElectricCar('tesla', 'model s', '2019')
+
+print(my_tesla.get_descriptive_name())
+my_tesla.battery.describe_battery()
+```
+
+定义一个名为`Battery`的新类，它没有继承任何类。方法`__init__()`除`self`外，还有另一个形参`battery_size`。这个形参是可选的：如果没有给它提供值，电瓶容量将被设置为75。方法`describe_battery()`也移到了这个类中。
+
+在`ElectricCar`类中，添加了一个名为`self.battery`的属性。这行代码让Python创建一个新的`Battery`实例（因为没有指定容量，所以为默认值75），并将该实例赋给属性`self.battery`。每当方法`__init__()`被调用时，都将执行该操作，因此现在每个`ElectricCar`实例都包含一个自动创建的`Battery `实例。 
+
+我们创建一辆电动汽车，并将其赋给变量`my_tesla`。描述电瓶时，需要使用电动汽车的属性`battery`：
