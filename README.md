@@ -2,7 +2,7 @@
 
 - [变量和简单数据类型](https://github.com/xzu212/my-python-note/blob/main/note01.md)
 
-   - [练习]
+   - [练习](https://github.com/xzu212/my-python-note/blob/main/practice01)
 
 
 - [列表简介](https://github.com/xzu212/my-python-note/blob/main/note02.md)
