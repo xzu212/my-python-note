@@ -470,3 +470,76 @@ print(my_tesla.get_descriptive_name())
 my_tesla.battery.describe_battery()
 my_tesla.battery.get_range()
 ```
+新增的方法`get_range()`做了一些简单的分析：如果电瓶的容量为75 kWh，就将续航里程设置为260英里；如果容量为100 kWh，就将续航里程设置为315英里，然后报告这个值。为使用这个方法，也需要通过汽车的属性`battery`来调用。
+
+输出指出了汽车的续航里程（这取决于电瓶的容量）：
+```
+2019 Tesla Model S
+This car has a 75-kWh battery.
+This car can go about 260 miles on a full charge.
+```
+
+## 导入类
+
+随着不断给类添加功能，文件可能变得很长，即便妥善地使用了继承亦如此。Python允许将类存储在模块中，然后在主程序中导入所需的模块。
+
+### 导入单个类
+
+创建一个只包含`Car`类的模块。这让我们面临一个微妙的命名问题：在本章中已经有一个名为car.py的文件，但这个模块也应命名为car.py，因为它包含表示汽车的代码。我们将这样解决这个命名问题：将Car类存储在一个名为car.py的模块中，该模块将覆盖前面使用的文件car.py。从现在开始，使用该模块的程序都必须使用更具体的文件名，如my_car.py。下面是模块car.py，其中只包含Car类的代码：
+```
+"""一个可用于表示汽车的类"""
+
+class Car:
+    """一次模拟汽车的简单尝试"""
+
+    def __init__(self, make, model, year):
+        """初始化描述汽车的属性"""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """返回整洁的描述性信息"""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        """打印一条指出汽车里程的消息"""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+    def update_odometer(self, mileage):
+        """
+        将里程表读数设置为指定的值，
+        禁止将里程表读数回调
+        """
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+    def increment_odometer(self, miles):
+        """将里程表读数增加指定的量"""
+        self.odometer_reading += miles
+ ```
+ 创建另一个文件`my_car.py`，在其中导入Car类并创建其实例：
+ ```
+ from car import Car
+
+my_new_car = Car('audi', 'a4', 2019)
+print(my_new_car.get_descriptive_name())
+
+my_new_car.odometer_reading = 23
+my_new_car.read_odometer()
+```
+`import`语句让Python打开模块`car`并导入其中的Car 类。这样，我们就可以使用Car类，就像它是在这个文件中定义的一样。 输出与我们在前面看到的一样：
+```
+2019 Audi A4
+This car has 23 miles on it.
+```
+
+### 在一个模块中存储多个类
+
+可根据需要在一个模块中存储任意数量的类。Battery类和ElectricCar类都可帮助模拟汽车，下面将它们都加入模块`car.py`中：
+
+
