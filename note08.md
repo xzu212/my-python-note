@@ -541,5 +541,199 @@ This car has 23 miles on it.
 ### 在一个模块中存储多个类
 
 可根据需要在一个模块中存储任意数量的类。Battery类和ElectricCar类都可帮助模拟汽车，下面将它们都加入模块`car.py`中：
+```
+"""一组用于表示汽车的类"""
 
 
+class Car:
+    """一次模拟汽车的简单尝试"""
+
+    def __init__(self, make, model, year):
+        """初始化描述汽车的属性"""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """返回整洁的描述性信息"""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        """打印一条指出汽车里程的消息"""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+    def update_odometer(self, mileage):
+        """
+        将里程表读数设置为指定的值，
+        禁止将里程表读数回调
+        """
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+    def increment_odometer(self, miles):
+        """将里程表读数增加指定的量"""
+        self.odometer_reading += miles
+
+
+class Battery:
+    """一次模拟电动汽车点评的简单尝试。"""
+
+    def __init__(self, battery_size=75):
+        """初始化电瓶的属性"""
+        self.battery_size = battery_size
+
+    def describe_battery(self):
+        """就打印一条描述电瓶容量的消息"""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+
+    def get_range(self):
+        """打印一条消息，指出电瓶的续航里程"""
+        if self.battery_size == 75:
+            range = 260
+        elif self.battery_size == 100:
+            range = 315
+
+        print(f"This car can go about {range} miles on a full charge.")
+
+
+class ElectricCar(Car):
+    """电动汽车的独特之处"""
+
+    def __init__(self, make, model, year):
+        """
+        初始化父类的属性
+        再初始化电动汽车特有的属性
+        """
+        super().__init__(make, model, year)
+        self.battery = Battery()
+```
+新建一个名为`my_electric_car.py`的文件，导入ElectricCar类，并创建一辆电动汽车：
+```
+from car import ElectricCar
+my_tesla = ElectricCar('tesla', 'model s', 2019)
+
+print(my_tesla.get_descriptive_name())
+my_tesla.battery.describe_battery()
+my_tesla.battery.get_range()
+```
+输出与之前相同，但大部分逻辑隐藏在一个模块中：
+```
+2019 Tesla Model S
+This car has a 75-kWh battery.
+This car can go about 260 miles on a full charge.
+```
+### 从一个模块中导入多个类
+
+可根据需要在程序文件中导入任意数量的类。
+
+如果要在同一个程序中创建普通汽车和电动汽车，就需要将Car类和ElectricCar类都导入：
+```
+from car import Car, ElectricCar
+
+my_beetle = Car('Volkswagen', 'beetle', 2019)
+print(my_beetle.get_descriptive_name())
+my_tesla = ElectricCar('tesla', 'raodster', 2019)
+print(my_tesla.get_descriptive_name())
+```
+>从一个模块中导入多个类时，用逗号分隔各个类。导入必要的类后，就可根据需要创建每个类的任意数量实例。
+```
+2019 Volkswagen Beetle
+2019 Tesla Roadster
+```
+### 导入整个模块
+
+导入整个模块，再使用句点表示法访问需要的类。
+
+这种导入方式很简单，代码也易于阅读。因为创建类实例的代码都包含模块名，所以不会与当前文件使用的任何名称发生冲突。
+
+导入整个`car`模块，并创建一辆普通汽车和一辆电动汽车：
+```
+import car
+
+my_beetle = car.Car('Volkswagen', 'beetle', 2019)
+print(my_beetle.get_descriptive_name())
+my_tesla = car.ElectricCar('tesla', 'roadster', 2019)
+print(my_tesla.get_descriptive_name())
+```
+导入整个car模块。接下来，使用语法`module_name.ClassName`访问需要的类。
+
+### 导入模块中的所有类
+
+要导入模块中的每个类，可使用下面的语法：
+```
+from module_name import *
+```
+不推荐使用这种导入方式，原因有二。第一，如果只看文件开头的`import`语句，就能清楚地知道程序使用了哪些类，将大有裨益。 然而这种导入方式没有明确地指出使用了模块中的哪些类。第二， 这种方式还可能引发名称方面的迷惑。如果不小心导入了一个与程 序文件中其他东西同名的类，将引发难以诊断的错误。
+
+虽然不推荐使用，但可能在别人编写的代码中见到它。 需要从一个模块中导入很多类时，最好导入整个模块，并使用 `module_name.ClassName`语法来访问类。这样做时，虽然文件开头并没有列出用到的所有类，但你清楚地知道在程序的哪些地方使用了导入的模块。这也避免了导入模块中的每个类可能引发的名称冲突。
+
+### 在一个模块中导入另一个模块
+
+有时候，需要将类分散到多个模块中，以免模块太大或在同一个模块中存储不相关的类。将类存储在多个模块中时，你可能会发现一个模块中的类依赖于另一个模块中的类。在这种情况下，可在前一个模块中导入必要的类。
+
+下面将Car类存储在一个模块中，并将ElectricCar类和Battery类存储在另一个模块中。将第二个模块命名为**electric_car.py** （这将覆盖前面创建的文件electric_car.py），并将Battery类和ElectricCar类复制到这个模块中：
+```
+"""一组可用于表示电动汽车的类"""
+from car import Car
+
+class Battery:
+    --snip--
+    
+class ElectricCar(Car):
+    --snip--
+```
+ElectricCar类需要访问其父类Car ，因此直接将Car类导入该模块中。如果忘记了这行代码，Python将在我们试图创建ElectricCar实例时引发错误。还需要更新模块car ，使其只包含Car类**Car.py**：
+```
+"""一个可用于表示汽车的类"""
+
+class Car:
+    --snip--
+````
+现在可以分别从每个模块中导入类，以根据需要创建任何类型的汽车了**my_cars.py**：
+```
+from car import Car
+from electric_car import ElectricCar
+
+my_beetle = Car('volkswagen' ,'beetle', 2019)
+print(my_beetle.get_descriptive_name())
+
+my_tesla = ElectricCar('tesla', 'roadster', 2019)
+print(my_tesla.get_descriptive_name())
+```
+
+### 使用别名
+
+要在程序中创建大量电动汽车实例，需要反复输入ElectricCar，非常烦琐。为避免这种烦恼，可在import语句中给ElectricCar 指定一个别名：
+```
+from electric_car import ElectricCar as EC
+```
+每当需要创建电动汽车实例时，都可使用这个别名：
+```
+my_tesla = EC('tesla', 'roadster', 2019)
+```
+
+## Python标准库
+
+Python标准库是一组模块，我们安装的Python都包含它。现在可以使用标准库中的任何函数和类，只需在程序开头包含一条简单的import 语句即可。
+
+下面来看看模块`random`。
+
+>在这个模块中，一个有趣的函数是`randint()`。它将两个整数作为参数，并随机返回一个位于这两个整数之间（含）的整数。
+>
+>下面演示如何生成一个位于1和6之间的随机整数：
+
+```
+>>> from random import randint
+>>> randint(1,6)
+```
+>模块`random`中，另一个有用的函数是`choice()`。它将一个列表或元组作为参数，并随机返回其中的一个元素：
+```
+>>> from random import choice
+>>> players = ['charles', 'martina', 'michael', 'florence', 'eli']
+>>> first_up = choice(players)
+>>> first_up
+```
