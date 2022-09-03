@@ -4,8 +4,9 @@
 
    - [练习](https://github.com/xzu212/my-python-note/blob/main/practice01.ipynb)
 
-
 - [列表简介](https://github.com/xzu212/my-python-note/blob/main/note02.md)
+
+   - [练习](https://github.com/xzu212/my-python-note/blob/main/practice02.ipynb)
 
 - [操作列表](https://github.com/xzu212/my-python-note/blob/main/note03.md)
 
