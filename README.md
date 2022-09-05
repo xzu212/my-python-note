@@ -10,6 +10,8 @@
 
 - [操作列表](https://github.com/xzu212/my-python-note/blob/main/note03.md)
 
+   - [练习](https://github.com/xzu212/my-python-note/blob/main/practice03.ipynb)
+
 - [if语句](https://github.com/xzu212/my-python-note/blob/main/note04.md)
 
 - [字典](https://github.com/xzu212/my-python-note/blob/main/note05.md)
