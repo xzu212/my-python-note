@@ -26,6 +26,8 @@
 
 - [函数](https://github.com/xzu212/my-python-note/blob/main/note07.md)
 
+   - [练习](https://github.com/xzu212/my-python-note/blob/main/practice07.ipynb)
+
 - [类](https://github.com/xzu212/my-python-note/blob/main/note08.md)
 
 - [文件和异常](https://github.com/xzu212/my-python-note/blob/main/note09.md)
