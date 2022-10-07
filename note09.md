@@ -115,3 +115,18 @@ for line in lines:
 ### 使用文件的内容
 
 将文件读取到内存中后，就能以任何方式使用这些数据了。下面以简单的方式使用圆周率的值。首先，创建一个字符串，它包含文件中存储的所有数字，且没有任何空格：
+- pi_string.py
+
+```
+filename = 'pi_digits.txt'
+
+with open(filename) as file_object:
+    lines = file_object.readlines()
+    
+pi_string = ''
+for line in lines:
+    pi_string += line.rstrip()
+    
+print(pi_string)
+print(len(pi_string))
+```
