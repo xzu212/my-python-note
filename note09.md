@@ -130,3 +130,30 @@ for line in lines:
 print(pi_string)
 print(len(pi_string))
 ```
+首先打开文件，并将其中所有的行都存储在一个列表中。创建一个变量`pi_string`，用于指向圆周率的值。接下来，使用一个循环将各行加入`pi_string`，并删除每行末尾的换行符。打印这个字符串及其长度：
+```
+3.1415926535  8979323846  2643383279
+36
+```
+变量`pi_string`指向的字符串包含原来位于每行左边的空格，为删除这些空格，可使用`strip()`而非`rstrip()`：
+```
+filename = 'pi_digits.txt'
+
+with open(filename) as file_object:
+    lines = file_object.readlines()
+    
+pi_string = ''
+for line in lines:
+    pi_string += line.strip()
+    
+print(pi_string)
+print(len(pi_string))
+```
+输出一个字符串，其中包含准确到30位小数的圆周率值。这个字符串长32字符，因为它还包含整数部分的3和小数点：
+```
+3.141592653589793238462643383279
+32
+```
+- 读取文本文件时，Python将其中的所有文本都解读为字符串。如果读取的是数，并要将其作为数值使用，就必须使用函数`int()`将其转换为整数或使用函数`float()`将其转换为浮点数。
+
+### 包含一百万位的大型文件
