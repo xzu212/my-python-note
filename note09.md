@@ -560,3 +560,42 @@ with open(filename, 'w') as f:
 ```
 [2, 3, 5, 7, 11, 13]
 ```
+再编写一个程序，使用`json.load()`将列表读取到内存中：
+- number_reader.py
+
+```
+import json
+
+filename = 'numbers.json'
+with open(filename) as f:
+    numbers = json.load(f)
+
+print(numbers)
+```
+以读取方式打开该文件。使用函数`json.load()`加载存储在numbers.json中的信息，并将其赋给变量numbers。最后，打印恢复的数字列表，看看是否与 number_writer.py中创建的数字列表相同：
+```
+[2, 3, 5, 7, 11, 13]
+```
+### 保存和读取用户生成的数据
+ 
+使用json保存用户生成的数据，如果不以某种方式存储，用户的信息会在程序停止运行时丢失。下面来看一个这样的例子：提示用户首次运行程序时输入自己的名字，并在再次运行程序时记住他。 
+
+先来存储用户的名字：
+- remember_me.py
+
+```
+import json 
+
+username = input("What is your name? ")
+
+filename = 'username.json'
+with open(filename, 'w') as f:
+    json.dump(username, f)
+    print(f"We'll remember you when you come back,{username}!")
+```
+
+提示输入用户名并将其赋给一个变量。接下来，调用`json.dump()`，并将用户名和一个文件对象传递给它，从而将用户名存储到文件中。然后，打印一条消息，指出存储了用户输入的信息：
+```
+What is your name? Eric 
+We'll remember you when you come back, Eric!
+```
