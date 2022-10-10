@@ -706,3 +706,41 @@ def greet_user():
 greet_user()
 ```
 新增的函数`get_stored_username()`目标明确。如果存储了用户名，该函数就获取并返回它；如果文件username.json不存在，该函数就返回None。这是一种不错的做法：函数要么返回预期的值，要么返回None。这让我们能够使用函数的返回值做简单的测试。如果成功地获取了用户名，就打印一条欢迎用户回来的消息，否则提示用户输入用户名。
+
+
+
+重构greet_user()中的另一个代码块，将没有存储用户名时提示用户输入的代码放在一个独立的函数中：
+```
+import json
+
+def get_stored_username():
+    """如果存储了用户名，就获取它。"""
+    filename = 'username.json'
+    try:
+        with open(filename) as f:
+            username = json.load(f)
+    except FileNotFoundError:
+        return None
+    else:
+        return username
+
+def get_new_username():
+    """提示用户输入用户名。"""
+    username = input("What is your name? ")
+    filename = 'username.json'
+    with open(filename, 'w') as f:
+        json.dump(username, f)
+    return username
+
+def greet_user():
+    """问候用户，并指出其名字。"""
+    username = get_stored_username()
+    if username:
+        print(f"Welcome back, {username}!")
+    else:
+        username = get_new_username()
+        print(f"We'll remember your when you come back, {username}.")
+
+greet_user()
+```
+调用greet_user()，它打印一条合适的消息：要么欢迎老用户回来，要么问候新用户。为此，它首先调用get_stored_username()，该函数只负责获取已存储的用户名（如果存储了的话）。最后在必要时调用get_new_username()，该函数只负责获取并存储新用户的用户名。
