@@ -30,4 +30,8 @@
 
 - [类](https://github.com/xzu212/my-python-note/blob/main/note08.md)
 
+   - [练习](https://github.com/xzu212/my-python-note/blob/main/practice08.ipynb)
+
 - [文件和异常](https://github.com/xzu212/my-python-note/blob/main/note09.md)
+
+   - [练习](https://github.com/xzu212/my-python-note/blob/main/practice09.ipynb)
