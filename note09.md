@@ -646,3 +646,63 @@ Welcome back, Eric!
 ```
 这是程序之前至少运行了一次时的输出。
 
+### 重构
+
+你经常会遇到这样的情况：代码能够正确地运行，但通过将其划分为一系列完成具体工作的函数，还可以改进。这样的过程称为**重构**。重构让代码更清晰、更易于理解、更容易扩展。 
+
+要重构remember_me.py，可将其大部分逻辑放到一个或多个函数中。remember_me.py的重点是问候用户，因此将其所有代码都放到一个名为greet_user()的函数中：
+- remember_me.py
+
+```
+import json
+
+
+def greet_user():
+    """问候用户，并指出其名字。"""
+    filename = 'username.json'
+    try:
+        with open(filename) as f:
+            username = json.load(f)
+    except FileNotFoundError:
+        username = input("What is your name? ")
+        with open(filename, 'w') as f:
+            json.dump(username, f)
+            print(f"We'll remember you when you come back, {username}!")
+    else:
+        print(f"Welcome back, {username}!")
+
+
+greet_user()
+```
+这个程序更加清晰，但函数greet_user()所做的不仅仅是问候用户，还在存储了用户名时获取它、在没有存储用户名时提示用户输入。
+
+下面来重构greet_user()，减少其任务。为此，首先将获取已存储用户名的代码移到另一个函数中：
+```
+import json
+
+def get_stored_username():
+    """如果存储了用户名，就获取它。"""
+    filename = 'username.json'
+    try:
+        with open(filename) as f:
+            username = json.load(f)
+    except FileNotFoundError:
+        return None
+    else:
+        return username
+
+def greet_user():
+    """问候用户，并指出其名字。"""
+    username = get_stored_username()
+    if username:
+        print(f"Welcome back, {username}!")
+    else:
+        username = input("What is your name? ")
+        filename = 'username.json'
+        with open(filename, 'w') as f:
+            json.dump(username, f)
+            print(f"We'll remember your when you come back, {username}.")
+
+greet_user()
+```
+新增的函数`get_stored_username()`目标明确。如果存储了用户名，该函数就获取并返回它；如果文件username.json不存在，该函数就返回None。这是一种不错的做法：函数要么返回预期的值，要么返回None。这让我们能够使用函数的返回值做简单的测试。如果成功地获取了用户名，就打印一条欢迎用户回来的消息，否则提示用户输入用户名。
