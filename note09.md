@@ -599,3 +599,50 @@ with open(filename, 'w') as f:
 What is your name? Eric 
 We'll remember you when you come back, Eric!
 ```
+再编写一个程序，向已存储了名字的用户发出问候：
+- greet_user.py
+
+```
+import json
+
+filename = 'username.json'
+with open(filename) as f:
+    username = json.load(f)
+    print(f"Welcome back, {username}!")
+```
+使用`json.load()`将存储在username.json中的信息读取到变量username中。恢复用户名后，就可以欢迎用户回来了：
+```
+Welcome back, Eric!
+```
+将这两个程序合并到一个程序（remember_me.py）中。这个程序运行时，将尝试从文件username.json中获取用户名。因此，首先编写一个尝试恢复用户名的try代码块。如果这个文件不存在，就在except代码块中提示用户输入用户名，并将其存储到username.json中，以便程序再次运行时能够获取：
+```
+import json
+# 如果以前存储了用户名，就加载它。
+# 否则，提示用户输入用户名并加载它。
+filename = 'username.json'
+try:
+    with open(filename) as f:
+        username = json.load(f)
+except FileNotFoundError:
+    username = input("What is your name? ")
+    with open(filename, 'w') as f:
+        json.dump(username, f)
+        print(f"We'll remember you when you come back, {username}!")
+else:
+    print(f"Welcome back, {username}!")
+```
+尝试打开文件username.json。如果该文件存在，就将其中的用户名读取到内存中，再执行else代码块，打印一条欢迎用户回来的消息。
+
+用户首次运行该程序时，文件username.json不存在，将引发FileNotFoundError异常。因此Python将执行except代码块，提示用户输入用户名，再使用json.dump()储该用户名并打印一句问候语。
+
+无论执行的是except还是else代码块，都将显示用户名和合适的问候语。如果这个程序是首次运行，输出将如下：
+```
+What is your name? Eric 
+We'll remember you when you come back, Eric! 
+```
+否则，输出将如下： 
+```
+Welcome back, Eric!
+```
+这是程序之前至少运行了一次时的输出。
+
