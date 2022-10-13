@@ -12,30 +12,30 @@
 > ```
 >读取你刚创建的文件 learning_python.txt 中的每一行，将其中的 Python 都替换为另一门语言的名称，如 C。将修改后的各行都打印到屏幕上。
 
-- [练习3：访客]()
+- [练习3：访客](https://github.com/xzu212/my-python-note/blob/main/practice09/practice3.py)
 
 > 编写一个程序，提示用户输入其名字；用户做出响应后，将其名字写入到文件 guest.txt 中。
 
-- [练习4：访客名单]()
+- [练习4：访客名单](https://github.com/xzu212/my-python-note/blob/main/practice09/practice4.py)
 
 > 编写一个 while 循环，提示用户输入其名字。用户输入其名字后，在屏幕上打印问候语，并将一条到访记录添加到文件 guest_book.txt 中。确保这个文件中的每条记录都独占一行。
 
-- [练习5：调查]()
+- [练习5：调查](https://github.com/xzu212/my-python-note/blob/main/practice09/practice5.py)
 
 > 编写一个 while 循环，询问用户为何喜欢编程。每当用户输入一个原因后，都将其添加到一个存储所有原因的文件中。
 
-- [练习6：加法运算]()
+- [练习6：加法运算](https://github.com/xzu212/my-python-note/blob/main/practice09/practice6.py)
 
 > 提示用户提供数值输入时，常出现的一个问题是，用户提供的是文本而不是数。在这种情况下，当你尝试将输入转换为整数时，将引发 ValueError 异常。编写一个程序，提示用户输入两个数，再将它们相加并打印结果。在用户输入的任何一个值不是数字时都捕获 ValueError 异常，并打印一条友好的错误消息。对你编写的程序进行测试：先输入两个数，再输入一些文本而不是数。
 
-- [练习7：加法计算器]()
+- [练习7：加法计算器](https://github.com/xzu212/my-python-note/blob/main/practice09/practice7.py)
 
 > 将你为完成练习6而编写的代码放在一个 while 循环中，让用户犯错（输入的是文本而不是数）后能够继续输入数。
 
-- [练习8：猫和狗]()
+- [练习8：猫和狗](https://github.com/xzu212/my-python-note/blob/main/practice09/practice8.py)
 
 >创建两个文件 cats.txt 和 dogs.txt，在第一个文件中至少存储三只猫的名字，在第二个文件中至少存储三条狗的名字。编写一个程序，尝试读取这些文件，并将其内容打印到屏幕上。将这些代码放在一个 try-except 代码块中，以便在文件不存在时捕获 FileNotFound错误，并打印一条友好的消息。将文件之一移到另一个地方，并确认 except 代码块中的代码将正确地执行。
 
-- [练习9：静默的猫和狗]()
+- [练习9：静默的猫和狗](https://github.com/xzu212/my-python-note/blob/main/practice09/practice9.py)
 
 >修改你在练习 8 中编写的 except 代码块，让程序在文件不存在时静默失败。
