@@ -54,6 +54,7 @@
 >编写一个程序，它读取你在古登堡计划中获取的文件，并计算单词'the'在每个文件中分别出现了多少次。这里计算得到的结果并不准确，因为将诸如'then'和'there'等单词也计算在内了。请尝试计算'the '（包含空格）出现的次数，看看结果相差多少。
 
 - [练习11：喜欢的数](https://github.com/xzu212/my-python-note/blob/main/practice09/practice11-1.py)
+-                   (https://github.com/xzu212/my-python-note/blob/main/practice09/practice11-2.py)
 
 > 编写一个程序，提示用户输入他喜欢的数，并使用 json.dump() 将这个数字存储到文件中。再编写一个程序，从文件中读取这个值，并打印消息“I know your favorite number! It’s _____.”。
 
