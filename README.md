@@ -35,3 +35,7 @@
 - [文件和异常](https://github.com/xzu212/my-python-note/blob/main/note09.md)
 
    - [练习](https://github.com/xzu212/my-python-note/tree/main/practice09)
+
+- [测试代码](https://github.com/xzu212/my-python-note/blob/main/note10.md)
+
+   - [练习](https://github.com/xzu212/my-python-note/tree/main/practice09)
